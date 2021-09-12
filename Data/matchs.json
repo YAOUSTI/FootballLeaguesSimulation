@@ -1,0 +1,2212 @@
+{
+    "matchs": [
+        {
+            "id": 2,
+            "team_1": 1,
+            "team_2": 2,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-12 20:45:00",
+            "team_home": {
+                "id": 1,
+                "group_id": 1,
+                "name": "Benfica"
+            },
+            "team_away": {
+                "id": 2,
+                "group_id": 1,
+                "name": "CSKA Moskva"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 3,
+            "team_2": 4,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-12 20:45:00",
+            "team_home": {
+                "id": 3,
+                "group_id": 1,
+                "name": "Manchester United"
+            },
+            "team_away": {
+                "id": 4,
+                "group_id": 1,
+                "name": "FC Basel"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 4,
+            "team_2": 1,
+            "score_1": 5,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-27 20:45:00",
+            "team_home": {
+                "id": 4,
+                "group_id": 1,
+                "name": "FC Basel"
+            },
+            "team_away": {
+                "id": 1,
+                "group_id": 1,
+                "name": "Benfica"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 2,
+            "team_2": 3,
+            "score_1": 1,
+            "score_2": 4,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-27 20:45:00",
+            "team_home": {
+                "id": 2,
+                "group_id": 1,
+                "name": "CSKA Moskva"
+            },
+            "team_away": {
+                "id": 3,
+                "group_id": 1,
+                "name": "Manchester United"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 2,
+            "team_2": 4,
+            "score_1": 0,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-18 20:45:00",
+            "team_home": {
+                "id": 2,
+                "group_id": 1,
+                "name": "CSKA Moskva"
+            },
+            "team_away": {
+                "id": 4,
+                "group_id": 1,
+                "name": "FC Basel"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 1,
+            "team_2": 3,
+            "score_1": 0,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-18 20:45:00",
+            "team_home": {
+                "id": 1,
+                "group_id": 1,
+                "name": "Benfica"
+            },
+            "team_away": {
+                "id": 3,
+                "group_id": 1,
+                "name": "Manchester United"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 4,
+            "team_2": 2,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-31 20:45:00",
+            "team_home": {
+                "id": 4,
+                "group_id": 1,
+                "name": "FC Basel"
+            },
+            "team_away": {
+                "id": 2,
+                "group_id": 1,
+                "name": "CSKA Moskva"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 3,
+            "team_2": 1,
+            "score_1": 2,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-31 20:45:00",
+            "team_home": {
+                "id": 3,
+                "group_id": 1,
+                "name": "Manchester United"
+            },
+            "team_away": {
+                "id": 1,
+                "group_id": 1,
+                "name": "Benfica"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 2,
+            "team_2": 1,
+            "score_1": 2,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-22 20:45:00",
+            "team_home": {
+                "id": 2,
+                "group_id": 1,
+                "name": "CSKA Moskva"
+            },
+            "team_away": {
+                "id": 1,
+                "group_id": 1,
+                "name": "Benfica"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 4,
+            "team_2": 3,
+            "score_1": 1,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-22 20:45:00",
+            "team_home": {
+                "id": 4,
+                "group_id": 1,
+                "name": "FC Basel"
+            },
+            "team_away": {
+                "id": 3,
+                "group_id": 1,
+                "name": "Manchester United"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 1,
+            "team_2": 4,
+            "score_1": 0,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-05 20:45:00",
+            "team_home": {
+                "id": 1,
+                "group_id": 1,
+                "name": "Benfica"
+            },
+            "team_away": {
+                "id": 4,
+                "group_id": 1,
+                "name": "FC Basel"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 3,
+            "team_2": 2,
+            "score_1": 2,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-05 20:45:00",
+            "team_home": {
+                "id": 3,
+                "group_id": 1,
+                "name": "Manchester United"
+            },
+            "team_away": {
+                "id": 2,
+                "group_id": 1,
+                "name": "CSKA Moskva"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 7,
+            "team_2": 5,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-12 20:45:00",
+            "team_home": {
+                "id": 7,
+                "group_id": 2,
+                "name": "FC Bayern München"
+            },
+            "team_away": {
+                "id": 5,
+                "group_id": 2,
+                "name": "Anderlecht"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 6,
+            "team_2": 8,
+            "score_1": 0,
+            "score_2": 5,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-12 20:45:00",
+            "team_home": {
+                "id": 6,
+                "group_id": 2,
+                "name": "Celtic"
+            },
+            "team_away": {
+                "id": 8,
+                "group_id": 2,
+                "name": "Paris SG"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 8,
+            "team_2": 7,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-27 20:45:00",
+            "team_home": {
+                "id": 8,
+                "group_id": 2,
+                "name": "Paris SG"
+            },
+            "team_away": {
+                "id": 7,
+                "group_id": 2,
+                "name": "FC Bayern München"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 5,
+            "team_2": 6,
+            "score_1": 0,
+            "score_2": 3,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-27 20:45:00",
+            "team_home": {
+                "id": 5,
+                "group_id": 2,
+                "name": "Anderlecht"
+            },
+            "team_away": {
+                "id": 6,
+                "group_id": 2,
+                "name": "Celtic"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 5,
+            "team_2": 8,
+            "score_1": 0,
+            "score_2": 4,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-18 20:45:00",
+            "team_home": {
+                "id": 5,
+                "group_id": 2,
+                "name": "Anderlecht"
+            },
+            "team_away": {
+                "id": 8,
+                "group_id": 2,
+                "name": "Paris SG"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 7,
+            "team_2": 6,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-18 20:45:00",
+            "team_home": {
+                "id": 7,
+                "group_id": 2,
+                "name": "FC Bayern München"
+            },
+            "team_away": {
+                "id": 6,
+                "group_id": 2,
+                "name": "Celtic"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 8,
+            "team_2": 5,
+            "score_1": 5,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-31 20:45:00",
+            "team_home": {
+                "id": 8,
+                "group_id": 2,
+                "name": "Paris SG"
+            },
+            "team_away": {
+                "id": 5,
+                "group_id": 2,
+                "name": "Anderlecht"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 6,
+            "team_2": 7,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-31 20:45:00",
+            "team_home": {
+                "id": 6,
+                "group_id": 2,
+                "name": "Celtic"
+            },
+            "team_away": {
+                "id": 7,
+                "group_id": 2,
+                "name": "FC Bayern München"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 5,
+            "team_2": 7,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-22 20:45:00",
+            "team_home": {
+                "id": 5,
+                "group_id": 2,
+                "name": "Anderlecht"
+            },
+            "team_away": {
+                "id": 7,
+                "group_id": 2,
+                "name": "FC Bayern München"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 8,
+            "team_2": 6,
+            "score_1": 7,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-22 20:45:00",
+            "team_home": {
+                "id": 8,
+                "group_id": 2,
+                "name": "Paris SG"
+            },
+            "team_away": {
+                "id": 6,
+                "group_id": 2,
+                "name": "Celtic"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 7,
+            "team_2": 8,
+            "score_1": 3,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-05 20:45:00",
+            "team_home": {
+                "id": 7,
+                "group_id": 2,
+                "name": "FC Bayern München"
+            },
+            "team_away": {
+                "id": 8,
+                "group_id": 2,
+                "name": "Paris SG"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 6,
+            "team_2": 5,
+            "score_1": 0,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-05 20:45:00",
+            "team_home": {
+                "id": 6,
+                "group_id": 2,
+                "name": "Celtic"
+            },
+            "team_away": {
+                "id": 5,
+                "group_id": 2,
+                "name": "Anderlecht"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 10,
+            "team_2": 9,
+            "score_1": 6,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-12 20:45:00",
+            "team_home": {
+                "id": 10,
+                "group_id": 3,
+                "name": "Chelsea"
+            },
+            "team_away": {
+                "id": 9,
+                "group_id": 3,
+                "name": "Qarabağ FK"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 12,
+            "team_2": 11,
+            "score_1": 0,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-12 20:45:00",
+            "team_home": {
+                "id": 12,
+                "group_id": 3,
+                "name": "Roma"
+            },
+            "team_away": {
+                "id": 11,
+                "group_id": 3,
+                "name": "Atlético Madrid"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 9,
+            "team_2": 12,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-27 20:45:00",
+            "team_home": {
+                "id": 9,
+                "group_id": 3,
+                "name": "Qarabağ FK"
+            },
+            "team_away": {
+                "id": 12,
+                "group_id": 3,
+                "name": "Roma"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 11,
+            "team_2": 10,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-27 20:45:00",
+            "team_home": {
+                "id": 11,
+                "group_id": 3,
+                "name": "Atlético Madrid"
+            },
+            "team_away": {
+                "id": 10,
+                "group_id": 3,
+                "name": "Chelsea"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 9,
+            "team_2": 11,
+            "score_1": 0,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-18 20:45:00",
+            "team_home": {
+                "id": 9,
+                "group_id": 3,
+                "name": "Qarabağ FK"
+            },
+            "team_away": {
+                "id": 11,
+                "group_id": 3,
+                "name": "Atlético Madrid"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 10,
+            "team_2": 12,
+            "score_1": 3,
+            "score_2": 3,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-18 20:45:00",
+            "team_home": {
+                "id": 10,
+                "group_id": 3,
+                "name": "Chelsea"
+            },
+            "team_away": {
+                "id": 12,
+                "group_id": 3,
+                "name": "Roma"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 11,
+            "team_2": 9,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-31 20:45:00",
+            "team_home": {
+                "id": 11,
+                "group_id": 3,
+                "name": "Atlético Madrid"
+            },
+            "team_away": {
+                "id": 9,
+                "group_id": 3,
+                "name": "Qarabağ FK"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 12,
+            "team_2": 10,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-31 20:45:00",
+            "team_home": {
+                "id": 12,
+                "group_id": 3,
+                "name": "Roma"
+            },
+            "team_away": {
+                "id": 10,
+                "group_id": 3,
+                "name": "Chelsea"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 9,
+            "team_2": 10,
+            "score_1": 0,
+            "score_2": 4,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-22 20:45:00",
+            "team_home": {
+                "id": 9,
+                "group_id": 3,
+                "name": "Qarabağ FK"
+            },
+            "team_away": {
+                "id": 10,
+                "group_id": 3,
+                "name": "Chelsea"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 11,
+            "team_2": 12,
+            "score_1": 2,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-22 20:45:00",
+            "team_home": {
+                "id": 11,
+                "group_id": 3,
+                "name": "Atlético Madrid"
+            },
+            "team_away": {
+                "id": 12,
+                "group_id": 3,
+                "name": "Roma"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 10,
+            "team_2": 11,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-05 20:45:00",
+            "team_home": {
+                "id": 10,
+                "group_id": 3,
+                "name": "Chelsea"
+            },
+            "team_away": {
+                "id": 11,
+                "group_id": 3,
+                "name": "Atlético Madrid"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 12,
+            "team_2": 9,
+            "score_1": 1,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-05 20:45:00",
+            "team_home": {
+                "id": 12,
+                "group_id": 3,
+                "name": "Roma"
+            },
+            "team_away": {
+                "id": 9,
+                "group_id": 3,
+                "name": "Qarabağ FK"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 15,
+            "team_2": 16,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-12 20:45:00",
+            "team_home": {
+                "id": 15,
+                "group_id": 4,
+                "name": "Barcelona"
+            },
+            "team_away": {
+                "id": 16,
+                "group_id": 4,
+                "name": "Jeventus"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 14,
+            "team_2": 13,
+            "score_1": 2,
+            "score_2": 3,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-12 20:45:00",
+            "team_home": {
+                "id": 14,
+                "group_id": 4,
+                "name": "Olympiakos"
+            },
+            "team_away": {
+                "id": 13,
+                "group_id": 4,
+                "name": "Sporting Lisboa"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 13,
+            "team_2": 15,
+            "score_1": 0,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-27 20:45:00",
+            "team_home": {
+                "id": 13,
+                "group_id": 4,
+                "name": "Sporting Lisboa"
+            },
+            "team_away": {
+                "id": 15,
+                "group_id": 4,
+                "name": "Barcelona"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 16,
+            "team_2": 14,
+            "score_1": 2,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-27 20:45:00",
+            "team_home": {
+                "id": 16,
+                "group_id": 4,
+                "name": "Jeventus"
+            },
+            "team_away": {
+                "id": 14,
+                "group_id": 4,
+                "name": "Olympiakos"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 16,
+            "team_2": 13,
+            "score_1": 2,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-18 20:45:00",
+            "team_home": {
+                "id": 16,
+                "group_id": 4,
+                "name": "Jeventus"
+            },
+            "team_away": {
+                "id": 13,
+                "group_id": 4,
+                "name": "Sporting Lisboa"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 15,
+            "team_2": 14,
+            "score_1": 3,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-18 20:45:00",
+            "team_home": {
+                "id": 15,
+                "group_id": 4,
+                "name": "Barcelona"
+            },
+            "team_away": {
+                "id": 14,
+                "group_id": 4,
+                "name": "Olympiakos"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 13,
+            "team_2": 16,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-31 20:45:00",
+            "team_home": {
+                "id": 13,
+                "group_id": 4,
+                "name": "Sporting Lisboa"
+            },
+            "team_away": {
+                "id": 16,
+                "group_id": 4,
+                "name": "Jeventus"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 14,
+            "team_2": 15,
+            "score_1": 0,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-31 20:45:00",
+            "team_home": {
+                "id": 14,
+                "group_id": 4,
+                "name": "Olympiakos"
+            },
+            "team_away": {
+                "id": 15,
+                "group_id": 4,
+                "name": "Barcelona"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 16,
+            "team_2": 15,
+            "score_1": 0,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-22 20:45:00",
+            "team_home": {
+                "id": 16,
+                "group_id": 4,
+                "name": "Jeventus"
+            },
+            "team_away": {
+                "id": 15,
+                "group_id": 4,
+                "name": "Barcelona"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 13,
+            "team_2": 14,
+            "score_1": 3,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-22 20:45:00",
+            "team_home": {
+                "id": 13,
+                "group_id": 4,
+                "name": "Sporting Lisboa"
+            },
+            "team_away": {
+                "id": 14,
+                "group_id": 4,
+                "name": "Olympiakos"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 15,
+            "team_2": 13,
+            "score_1": 2,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-05 20:45:00",
+            "team_home": {
+                "id": 15,
+                "group_id": 4,
+                "name": "Barcelona"
+            },
+            "team_away": {
+                "id": 13,
+                "group_id": 4,
+                "name": "Sporting Lisboa"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 14,
+            "team_2": 16,
+            "score_1": 0,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-05 20:45:00",
+            "team_home": {
+                "id": 14,
+                "group_id": 4,
+                "name": "Olympiakos"
+            },
+            "team_away": {
+                "id": 16,
+                "group_id": 4,
+                "name": "Jeventus"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 18,
+            "team_2": 17,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-13 20:45:00",
+            "team_home": {
+                "id": 18,
+                "group_id": 5,
+                "name": "Maribor"
+            },
+            "team_away": {
+                "id": 17,
+                "group_id": 5,
+                "name": "Spartak"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 19,
+            "team_2": 20,
+            "score_1": 2,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-13 20:45:00",
+            "team_home": {
+                "id": 19,
+                "group_id": 5,
+                "name": "Liverpool"
+            },
+            "team_away": {
+                "id": 20,
+                "group_id": 5,
+                "name": "Sevilla"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 20,
+            "team_2": 18,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-26 20:45:00",
+            "team_home": {
+                "id": 20,
+                "group_id": 5,
+                "name": "Sevilla"
+            },
+            "team_away": {
+                "id": 18,
+                "group_id": 5,
+                "name": "Maribor"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 17,
+            "team_2": 19,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-26 20:45:00",
+            "team_home": {
+                "id": 17,
+                "group_id": 5,
+                "name": "Spartak"
+            },
+            "team_away": {
+                "id": 19,
+                "group_id": 5,
+                "name": "Liverpool"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 17,
+            "team_2": 20,
+            "score_1": 5,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-17 20:45:00",
+            "team_home": {
+                "id": 17,
+                "group_id": 5,
+                "name": "Spartak"
+            },
+            "team_away": {
+                "id": 20,
+                "group_id": 5,
+                "name": "Sevilla"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 18,
+            "team_2": 19,
+            "score_1": 0,
+            "score_2": 7,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-17 20:45:00",
+            "team_home": {
+                "id": 18,
+                "group_id": 5,
+                "name": "Maribor"
+            },
+            "team_away": {
+                "id": 19,
+                "group_id": 5,
+                "name": "Liverpool"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 20,
+            "team_2": 17,
+            "score_1": 2,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-01 20:45:00",
+            "team_home": {
+                "id": 20,
+                "group_id": 5,
+                "name": "Sevilla"
+            },
+            "team_away": {
+                "id": 17,
+                "group_id": 5,
+                "name": "Spartak"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 19,
+            "team_2": 18,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-01 20:45:00",
+            "team_home": {
+                "id": 19,
+                "group_id": 5,
+                "name": "Liverpool"
+            },
+            "team_away": {
+                "id": 18,
+                "group_id": 5,
+                "name": "Maribor"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 17,
+            "team_2": 18,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-21 20:45:00",
+            "team_home": {
+                "id": 17,
+                "group_id": 5,
+                "name": "Spartak"
+            },
+            "team_away": {
+                "id": 18,
+                "group_id": 5,
+                "name": "Maribor"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 20,
+            "team_2": 19,
+            "score_1": 3,
+            "score_2": 3,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-21 20:45:00",
+            "team_home": {
+                "id": 20,
+                "group_id": 5,
+                "name": "Sevilla"
+            },
+            "team_away": {
+                "id": 19,
+                "group_id": 5,
+                "name": "Liverpool"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 18,
+            "team_2": 20,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-06 20:45:00",
+            "team_home": {
+                "id": 18,
+                "group_id": 5,
+                "name": "Maribor"
+            },
+            "team_away": {
+                "id": 20,
+                "group_id": 5,
+                "name": "Sevilla"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 19,
+            "team_2": 17,
+            "score_1": 7,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-06 20:45:00",
+            "team_home": {
+                "id": 19,
+                "group_id": 5,
+                "name": "Liverpool"
+            },
+            "team_away": {
+                "id": 17,
+                "group_id": 5,
+                "name": "Spartak"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 21,
+            "team_2": 23,
+            "score_1": 0,
+            "score_2": 4,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-13 20:45:00",
+            "team_home": {
+                "id": 21,
+                "group_id": 6,
+                "name": "Feyenoord"
+            },
+            "team_away": {
+                "id": 23,
+                "group_id": 6,
+                "name": "Manchester City"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 22,
+            "team_2": 24,
+            "score_1": 2,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-13 20:45:00",
+            "team_home": {
+                "id": 22,
+                "group_id": 6,
+                "name": "Shakhtar Donetsk"
+            },
+            "team_away": {
+                "id": 24,
+                "group_id": 6,
+                "name": "Napoli"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 24,
+            "team_2": 21,
+            "score_1": 3,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-26 20:45:00",
+            "team_home": {
+                "id": 24,
+                "group_id": 6,
+                "name": "Napoli"
+            },
+            "team_away": {
+                "id": 21,
+                "group_id": 6,
+                "name": "Feyenoord"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 23,
+            "team_2": 22,
+            "score_1": 2,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-26 20:45:00",
+            "team_home": {
+                "id": 23,
+                "group_id": 6,
+                "name": "Manchester City"
+            },
+            "team_away": {
+                "id": 22,
+                "group_id": 6,
+                "name": "Shakhtar Donetsk"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 23,
+            "team_2": 24,
+            "score_1": 2,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-17 20:45:00",
+            "team_home": {
+                "id": 23,
+                "group_id": 6,
+                "name": "Manchester City"
+            },
+            "team_away": {
+                "id": 24,
+                "group_id": 6,
+                "name": "Napoli"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 21,
+            "team_2": 22,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-17 20:45:00",
+            "team_home": {
+                "id": 21,
+                "group_id": 6,
+                "name": "Feyenoord"
+            },
+            "team_away": {
+                "id": 22,
+                "group_id": 6,
+                "name": "Shakhtar Donetsk"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 24,
+            "team_2": 23,
+            "score_1": 2,
+            "score_2": 4,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-01 20:45:00",
+            "team_home": {
+                "id": 24,
+                "group_id": 6,
+                "name": "Napoli"
+            },
+            "team_away": {
+                "id": 23,
+                "group_id": 6,
+                "name": "Manchester City"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 22,
+            "team_2": 21,
+            "score_1": 3,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-01 20:45:00",
+            "team_home": {
+                "id": 22,
+                "group_id": 6,
+                "name": "Shakhtar Donetsk"
+            },
+            "team_away": {
+                "id": 21,
+                "group_id": 6,
+                "name": "Feyenoord"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 23,
+            "team_2": 21,
+            "score_1": 1,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-21 20:45:00",
+            "team_home": {
+                "id": 23,
+                "group_id": 6,
+                "name": "Manchester City"
+            },
+            "team_away": {
+                "id": 21,
+                "group_id": 6,
+                "name": "Feyenoord"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 24,
+            "team_2": 22,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-21 20:45:00",
+            "team_home": {
+                "id": 24,
+                "group_id": 6,
+                "name": "Napoli"
+            },
+            "team_away": {
+                "id": 22,
+                "group_id": 6,
+                "name": "Shakhtar Donetsk"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 21,
+            "team_2": 24,
+            "score_1": 2,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-06 20:45:00",
+            "team_home": {
+                "id": 21,
+                "group_id": 6,
+                "name": "Feyenoord"
+            },
+            "team_away": {
+                "id": 24,
+                "group_id": 6,
+                "name": "Napoli"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 22,
+            "team_2": 23,
+            "score_1": 2,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-06 20:45:00",
+            "team_home": {
+                "id": 22,
+                "group_id": 6,
+                "name": "Shakhtar Donetsk"
+            },
+            "team_away": {
+                "id": 23,
+                "group_id": 6,
+                "name": "Manchester City"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 27,
+            "team_2": 28,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-13 20:45:00",
+            "team_home": {
+                "id": 27,
+                "group_id": 7,
+                "name": "Leipzig"
+            },
+            "team_away": {
+                "id": 28,
+                "group_id": 7,
+                "name": "Monaco"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 25,
+            "team_2": 26,
+            "score_1": 1,
+            "score_2": 3,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-13 20:45:00",
+            "team_home": {
+                "id": 25,
+                "group_id": 7,
+                "name": "Porto"
+            },
+            "team_away": {
+                "id": 26,
+                "group_id": 7,
+                "name": "Beşiktaş"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 26,
+            "team_2": 27,
+            "score_1": 2,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-26 20:45:00",
+            "team_home": {
+                "id": 26,
+                "group_id": 7,
+                "name": "Beşiktaş"
+            },
+            "team_away": {
+                "id": 27,
+                "group_id": 7,
+                "name": "Leipzig"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 28,
+            "team_2": 25,
+            "score_1": 0,
+            "score_2": 3,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-26 20:45:00",
+            "team_home": {
+                "id": 28,
+                "group_id": 7,
+                "name": "Monaco"
+            },
+            "team_away": {
+                "id": 25,
+                "group_id": 7,
+                "name": "Porto"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 28,
+            "team_2": 26,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-17 20:45:00",
+            "team_home": {
+                "id": 28,
+                "group_id": 7,
+                "name": "Monaco"
+            },
+            "team_away": {
+                "id": 26,
+                "group_id": 7,
+                "name": "Beşiktaş"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 27,
+            "team_2": 25,
+            "score_1": 3,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-17 20:45:00",
+            "team_home": {
+                "id": 27,
+                "group_id": 7,
+                "name": "Leipzig"
+            },
+            "team_away": {
+                "id": 25,
+                "group_id": 7,
+                "name": "Porto"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 26,
+            "team_2": 28,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-01 20:45:00",
+            "team_home": {
+                "id": 26,
+                "group_id": 7,
+                "name": "Beşiktaş"
+            },
+            "team_away": {
+                "id": 28,
+                "group_id": 7,
+                "name": "Monaco"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 25,
+            "team_2": 27,
+            "score_1": 3,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-01 20:45:00",
+            "team_home": {
+                "id": 25,
+                "group_id": 7,
+                "name": "Porto"
+            },
+            "team_away": {
+                "id": 27,
+                "group_id": 7,
+                "name": "Leipzig"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 26,
+            "team_2": 25,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-21 20:45:00",
+            "team_home": {
+                "id": 26,
+                "group_id": 7,
+                "name": "Beşiktaş"
+            },
+            "team_away": {
+                "id": 25,
+                "group_id": 7,
+                "name": "Porto"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 28,
+            "team_2": 27,
+            "score_1": 1,
+            "score_2": 4,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-21 20:45:00",
+            "team_home": {
+                "id": 28,
+                "group_id": 7,
+                "name": "Monaco"
+            },
+            "team_away": {
+                "id": 27,
+                "group_id": 7,
+                "name": "Leipzig"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 27,
+            "team_2": 26,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-06 20:45:00",
+            "team_home": {
+                "id": 27,
+                "group_id": 7,
+                "name": "Leipzig"
+            },
+            "team_away": {
+                "id": 26,
+                "group_id": 7,
+                "name": "Beşiktaş"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 25,
+            "team_2": 28,
+            "score_1": 5,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-06 20:45:00",
+            "team_home": {
+                "id": 25,
+                "group_id": 7,
+                "name": "Porto"
+            },
+            "team_away": {
+                "id": 28,
+                "group_id": 7,
+                "name": "Monaco"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 32,
+            "team_2": 29,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-13 20:45:00",
+            "team_home": {
+                "id": 32,
+                "group_id": 8,
+                "name": "R. Madrid"
+            },
+            "team_away": {
+                "id": 29,
+                "group_id": 8,
+                "name": "APOEL"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 31,
+            "team_2": 30,
+            "score_1": 3,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-13 20:45:00",
+            "team_home": {
+                "id": 31,
+                "group_id": 8,
+                "name": "Tottenham Hotspur"
+            },
+            "team_away": {
+                "id": 30,
+                "group_id": 8,
+                "name": "Borussia Dortmund"
+            }
+        },
+        {
+            "id": 1,
+            "team_1": 30,
+            "team_2": 32,
+            "score_1": 1,
+            "score_2": 3,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-26 20:45:00",
+            "team_home": {
+                "id": 30,
+                "group_id": 8,
+                "name": "Borussia Dortmund"
+            },
+            "team_away": {
+                "id": 32,
+                "group_id": 8,
+                "name": "R. Madrid"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 29,
+            "team_2": 31,
+            "score_1": 0,
+            "score_2": 3,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-09-26 20:45:00",
+            "team_home": {
+                "id": 29,
+                "group_id": 8,
+                "name": "APOEL"
+            },
+            "team_away": {
+                "id": 31,
+                "group_id": 8,
+                "name": "Tottenham Hotspur"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 29,
+            "team_2": 30,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-17 20:45:00",
+            "team_home": {
+                "id": 29,
+                "group_id": 8,
+                "name": "APOEL"
+            },
+            "team_away": {
+                "id": 30,
+                "group_id": 8,
+                "name": "Borussia Dortmund"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 32,
+            "team_2": 31,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-10-17 20:45:00",
+            "team_home": {
+                "id": 32,
+                "group_id": 8,
+                "name": "R. Madrid"
+            },
+            "team_away": {
+                "id": 31,
+                "group_id": 8,
+                "name": "Tottenham Hotspur"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 30,
+            "team_2": 29,
+            "score_1": 1,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-01 20:45:00",
+            "team_home": {
+                "id": 30,
+                "group_id": 8,
+                "name": "Borussia Dortmund"
+            },
+            "team_away": {
+                "id": 29,
+                "group_id": 8,
+                "name": "APOEL"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 31,
+            "team_2": 32,
+            "score_1": 3,
+            "score_2": 1,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-01 20:45:00",
+            "team_home": {
+                "id": 31,
+                "group_id": 8,
+                "name": "Tottenham Hotspur"
+            },
+            "team_away": {
+                "id": 32,
+                "group_id": 8,
+                "name": "R. Madrid"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 29,
+            "team_2": 32,
+            "score_1": 0,
+            "score_2": 6,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-21 20:45:00",
+            "team_home": {
+                "id": 29,
+                "group_id": 8,
+                "name": "APOEL"
+            },
+            "team_away": {
+                "id": 32,
+                "group_id": 8,
+                "name": "R. Madrid"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 30,
+            "team_2": 31,
+            "score_1": 1,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-11-21 20:45:00",
+            "team_home": {
+                "id": 30,
+                "group_id": 8,
+                "name": "Borussia Dortmund"
+            },
+            "team_away": {
+                "id": 31,
+                "group_id": 8,
+                "name": "Tottenham Hotspur"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 32,
+            "team_2": 30,
+            "score_1": 3,
+            "score_2": 2,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-06 20:45:00",
+            "team_home": {
+                "id": 32,
+                "group_id": 8,
+                "name": "R. Madrid"
+            },
+            "team_away": {
+                "id": 30,
+                "group_id": 8,
+                "name": "Borussia Dortmund"
+            }
+        },
+        {
+            "id": 2,
+            "team_1": 31,
+            "team_2": 29,
+            "score_1": 3,
+            "score_2": 0,
+            "phase": "groups",
+            "score_extra_1": null,
+            "score_extra_2": null,
+            "penalties_1": null,
+            "penalties_2": null,
+            "played_at": "2017-12-06 20:45:00",
+            "team_home": {
+                "id": 31,
+                "group_id": 8,
+                "name": "Tottenham Hotspur"
+            },
+            "team_away": {
+                "id": 29,
+                "group_id": 8,
+                "name": "APOEL"
+            }
+        }
+    ]
+}

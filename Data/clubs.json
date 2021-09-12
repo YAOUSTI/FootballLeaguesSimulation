@@ -1,0 +1,324 @@
+{
+    "clubs": [
+        {
+            "key": "anderlecht",
+            "name": "Anderlecht",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Anderlecht.png",
+            "country": {
+                "key": "be",
+                "name": "Belgium"
+            }
+        },
+        {
+            "key": "feyenoord",
+            "name": "Feyenoord",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Feyenoord.png",
+            "country": {
+                "key": "nl",
+                "name": "Netherlands"
+            }
+        },
+        {
+            "key": "porto",
+            "name": "Porto",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/FC-Porto.png",
+            "country": {
+                "key": "pt",
+                "name": "Portugal"
+            }
+        },
+        {
+            "key": "benfica",
+            "name": "Benfica",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Benfica.png",
+            "country": {
+                "key": "pt",
+                "name": "Portugal"
+            }
+        },
+        {
+            "key": "sportinglisboa",
+            "name": "Sporting Lisboa",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Sporting-CP-Lisbon.png",
+            "country": {
+                "key": "pt",
+                "name": "Portugal"
+            }
+        },
+        {
+            "key": "cskamoskva",
+            "name": "CSKA Moskva",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/CSKA-Moscow.png",
+            "country": {
+                "key": "ru",
+                "name": "Russia"
+            }
+        },
+        {
+            "key": "spartak",
+            "name": "Spartak",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Spartak-Moscow.png",
+            "country": {
+                "key": "ru",
+                "name": "Russia"
+            }
+        },
+        {
+            "key": "celtic",
+            "name": "Celtic",
+            "code": "CEL",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Celtic.png",
+            "country": {
+                "key": "sco",
+                "name": "Scotland"
+            }
+        },
+        {
+            "key": "besiktas",
+            "name": "Beşiktaş",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Besiktas.png",
+            "country": {
+                "key": "tr",
+                "name": "Turkey"
+            }
+        },
+        {
+            "key": "donezk",
+            "name": "Shakhtar Donetsk",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Shakhtar-Donetsk.png",
+            "country": {
+                "key": "ua",
+                "name": "Ukraine"
+            }
+        },
+        {
+            "key": "maribor",
+            "name": "Maribor",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/NK-Maribor.png",
+            "country": {
+                "key": "si",
+                "name": "Slovenia"
+            }
+        },
+        {
+            "key": "qarabag",
+            "name": "Qarabağ FK",
+            "code": null,
+            "logo": "",
+            "country": {
+                "key": "az",
+                "name": "Azerbaijan"
+            }
+        },
+        {
+            "key": "olympiacos",
+            "name": "Olympiakos",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Olympiakos-Piraeus.png",
+            "country": {
+                "key": "gr",
+                "name": "Greece"
+            }
+        },
+        {
+            "key": "apoel",
+            "name": "APOEL",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/APOEL-Nicosia.png",
+            "country": {
+                "key": "cy",
+                "name": "Cyprus"
+            }
+        },
+        {
+            "key": "barcelona",
+            "name": "Barcelona",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/FC-Barcelona.png",
+            "country": {
+                "key": "ec",
+                "name": "Spain"
+            }
+        },
+        {
+            "key": "liverpool",
+            "name": "Liverpool",
+            "code": null,
+            "logo": "https://kassiesa.net/uefa/clubs/images/Liverpool.png",
+            "country": {
+                "key": "uy",
+                "name": "England"
+            }
+        },
+        {
+            "key": "bayern",
+            "name": "FC Bayern München",
+            "code": "FCB",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Bayern-M%FCnchen.png",
+            "country": {
+                "key": "de",
+                "name": "Germany"
+            }
+        },
+        {
+            "key": "dortmund",
+            "name": "Borussia Dortmund",
+            "code": "BVB",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Borussia-Dortmund.png",
+            "country": {
+                "key": "de",
+                "name": "Germany"
+            }
+        },
+        {
+            "key": "leipzig",
+            "name": "Leipzig",
+            "code": "RBL",
+            "logo": "https://kassiesa.net/uefa/clubs/images/RB-Leipzig.png",
+            "country": {
+                "key": "de",
+                "name": "Germany"
+            }
+        },
+        {
+            "key": "chelsea",
+            "name": "Chelsea",
+            "code": "CHE",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Chelsea.png",
+            "country": {
+                "key": "eng",
+                "name": "England"
+            }
+        },
+        {
+            "key": "tottenham",
+            "name": "Tottenham Hotspur",
+            "code": "TOT",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Tottenham-Hotspur.png",
+            "country": {
+                "key": "eng",
+                "name": "England"
+            }
+        },
+        {
+            "key": "manutd",
+            "name": "Manchester United",
+            "code": "MUN",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Manchester-United.png",
+            "country": {
+                "key": "eng",
+                "name": "England"
+            }
+        },
+        {
+            "key": "mancity",
+            "name": "Manchester City",
+            "code": "MCI",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Manchester-City.png",
+            "country": {
+                "key": "eng",
+                "name": "England"
+            }
+        },
+        {
+            "key": "madrid",
+            "name": "R. Madrid",
+            "code": "RMD",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Real-Madrid.png",
+            "country": {
+                "key": "es",
+                "name": "Spain"
+            }
+        },
+        {
+            "key": "atletico",
+            "name": "Atlético Madrid",
+            "code": "ATL",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Atl%E9tico-Madrid.png",
+            "country": {
+                "key": "es",
+                "name": "Spain"
+            }
+        },
+        {
+            "key": "sevilla",
+            "name": "Sevilla",
+            "code": "SEV",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Sevilla.png",
+            "country": {
+                "key": "es",
+                "name": "Spain"
+            }
+        },
+        {
+            "key": "roma",
+            "name": "Roma",
+            "code": "ROM",
+            "logo": "https://kassiesa.net/uefa/clubs/images/AS-Roma.png",
+            "country": {
+                "key": "it",
+                "name": "Italy"
+            }
+        },
+        {
+            "key": "juventus",
+            "name": "Juventus",
+            "code": "JUV",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Juventus.png",
+            "country": {
+                "key": "it",
+                "name": "Italy"
+            }
+        },
+        {
+            "key": "napoli",
+            "name": "Napoli",
+            "code": "NAP",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Napoli.png",
+            "country": {
+                "key": "it",
+                "name": "Italy"
+            }
+        },
+        {
+            "key": "paris",
+            "name": "Paris SG",
+            "code": "PSG",
+            "logo": "https://kassiesa.net/uefa/clubs/images/Paris-Saint-Germain.png",
+            "country": {
+                "key": "fr",
+                "name": "France"
+            }
+        },
+        {
+            "key": "monaco",
+            "name": "Monaco",
+            "code": "ASM",
+            "logo": "https://kassiesa.net/uefa/clubs/images/AS-Monaco.png",
+            "country": {
+                "key": "mc",
+                "name": "Monaco"
+            }
+        },
+        {
+            "key": "basel",
+            "name": "FC Basel",
+            "code": "BAS",
+            "logo": "https://kassiesa.net/uefa/clubs/images/FC-Basel.png",
+            "country": {
+                "key": "ch",
+                "name": "Switzerland"
+            }
+        }
+    ]
+}

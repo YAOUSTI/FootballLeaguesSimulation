@@ -37,17 +37,17 @@
             @Html.DisplayFor(model => model.EndAt)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SeasonId)
+            @Html.DisplayNameFor(model => model.Season)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SeasonId)
-        </dd>
+            @Html.DisplayFor(model => model.Season.Id)
+        </dd class>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LeagueId)
+            @Html.DisplayNameFor(model => model.League)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LeagueId)
-        </dd>
+            @Html.DisplayFor(model => model.League.Id)
+        </dd class>
     </dl>
     
     <form asp-action="Delete">

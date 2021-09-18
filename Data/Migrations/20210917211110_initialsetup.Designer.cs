@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballLeaguesSimulation.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210912195040_initialsetup")]
+    [Migration("20210917211110_initialsetup")]
     partial class initialsetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -144,6 +144,9 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Logo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -155,6 +158,7 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         new
                         {
                             Id = 1,
+                            Logo = "https://w7.pngwing.com/pngs/145/829/png-transparent-uefa-champions-league-uefa-europa-league-uefa-super-cup-uefa-euro-2016-uefa-euro-2020-croatia-football-federation-blue-emblem-text-thumbnail.png",
                             Name = "EUFA"
                         });
                 });
@@ -1871,6 +1875,57 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("FootballLeaguesSimulation.Models.TeamStanding", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CompetitionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Draws")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GoalsAgaints")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GoalsDifference")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GoalsFor")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Loses")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MatchPlayed")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SeasonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Wins")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompetitionId");
+
+                    b.HasIndex("SeasonId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("TeamStanding");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -2160,6 +2215,33 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     b.Navigation("Group");
                 });
 
+            modelBuilder.Entity("FootballLeaguesSimulation.Models.TeamStanding", b =>
+                {
+                    b.HasOne("FootballLeaguesSimulation.Models.Competition", "Competition")
+                        .WithMany("TeamStandings")
+                        .HasForeignKey("CompetitionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FootballLeaguesSimulation.Models.Season", "Season")
+                        .WithMany("TeamStandings")
+                        .HasForeignKey("SeasonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FootballLeaguesSimulation.Models.Team", "Team")
+                        .WithMany("TeamStandings")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Competition");
+
+                    b.Navigation("Season");
+
+                    b.Navigation("Team");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -2220,6 +2302,8 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     b.Navigation("Rounds");
 
                     b.Navigation("Teams");
+
+                    b.Navigation("TeamStandings");
                 });
 
             modelBuilder.Entity("FootballLeaguesSimulation.Models.Group", b =>
@@ -2242,6 +2326,8 @@ namespace FootballLeaguesSimulation.Data.Migrations
             modelBuilder.Entity("FootballLeaguesSimulation.Models.Season", b =>
                 {
                     b.Navigation("Competitions");
+
+                    b.Navigation("TeamStandings");
                 });
 
             modelBuilder.Entity("FootballLeaguesSimulation.Models.Team", b =>
@@ -2249,6 +2335,8 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     b.Navigation("GuestMatches");
 
                     b.Navigation("HomeMatches");
+
+                    b.Navigation("TeamStandings");
                 });
 #pragma warning restore 612, 618
         }

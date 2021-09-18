@@ -26,10 +26,10 @@
                 @Html.DisplayNameFor(model => model.EndAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SeasonId)
+                @Html.DisplayNameFor(model => model.Season)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LeagueId)
+                @Html.DisplayNameFor(model => model.League)
             </th>
             <th></th>
         </tr>
@@ -50,10 +50,10 @@
                 @Html.DisplayFor(modelItem => item.EndAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SeasonId)
+                @Html.DisplayFor(modelItem => item.Season.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LeagueId)
+                @Html.DisplayFor(modelItem => item.League.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

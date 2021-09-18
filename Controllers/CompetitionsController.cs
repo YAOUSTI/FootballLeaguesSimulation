@@ -22,7 +22,8 @@ namespace FootballLeaguesSimulation.Controllers
         // GET: Competitions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Competition.ToListAsync());
+            var applicationDbContext = _context.Competition.Include(c => c.League).Include(c => c.Season);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Competitions/Details/5
@@ -34,6 +35,8 @@ namespace FootballLeaguesSimulation.Controllers
             }
 
             var competition = await _context.Competition
+                .Include(c => c.League)
+                .Include(c => c.Season)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (competition == null)
             {
@@ -46,6 +49,8 @@ namespace FootballLeaguesSimulation.Controllers
         // GET: Competitions/Create
         public IActionResult Create()
         {
+            ViewData["LeagueId"] = new SelectList(_context.League, "Id", "Id");
+            ViewData["SeasonId"] = new SelectList(_context.Season, "Id", "Id");
             return View();
         }
 
@@ -62,6 +67,8 @@ namespace FootballLeaguesSimulation.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LeagueId"] = new SelectList(_context.League, "Id", "Id", competition.LeagueId);
+            ViewData["SeasonId"] = new SelectList(_context.Season, "Id", "Id", competition.SeasonId);
             return View(competition);
         }
 
@@ -78,6 +85,8 @@ namespace FootballLeaguesSimulation.Controllers
             {
                 return NotFound();
             }
+            ViewData["LeagueId"] = new SelectList(_context.League, "Id", "Id", competition.LeagueId);
+            ViewData["SeasonId"] = new SelectList(_context.Season, "Id", "Id", competition.SeasonId);
             return View(competition);
         }
 
@@ -113,6 +122,8 @@ namespace FootballLeaguesSimulation.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LeagueId"] = new SelectList(_context.League, "Id", "Id", competition.LeagueId);
+            ViewData["SeasonId"] = new SelectList(_context.Season, "Id", "Id", competition.SeasonId);
             return View(competition);
         }
 
@@ -125,6 +136,8 @@ namespace FootballLeaguesSimulation.Controllers
             }
 
             var competition = await _context.Competition
+                .Include(c => c.League)
+                .Include(c => c.Season)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (competition == null)
             {

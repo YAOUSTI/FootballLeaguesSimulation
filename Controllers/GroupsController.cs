@@ -34,15 +34,15 @@ namespace FootballLeaguesSimulation.Controllers
                 return NotFound();
             }
 
-            var @group = await _context.Group
+            var group = await _context.Group
                 .Include(c => c.Competition)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (@group == null)
+            if (group == null)
             {
                 return NotFound();
             }
 
-            return View(@group);
+            return View(group);
         }
 
         // GET: Groups/Create
@@ -57,16 +57,16 @@ namespace FootballLeaguesSimulation.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CompetitionId")] Group @group)
+        public async Task<IActionResult> Create([Bind("Id,Name,CompetitionId")] Group group)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(@group);
+                _context.Add(group);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", @group.CompetitionId);
-            return View(@group);
+            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", group.CompetitionId);
+            return View(group);
         }
 
         // GET: Groups/Edit/5
@@ -77,13 +77,13 @@ namespace FootballLeaguesSimulation.Controllers
                 return NotFound();
             }
 
-            var @group = await _context.Group.FindAsync(id);
-            if (@group == null)
+            var group = await _context.Group.FindAsync(id);
+            if (group == null)
             {
                 return NotFound();
             }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", @group.CompetitionId);
-            return View(@group);
+            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", group.CompetitionId);
+            return View(group);
         }
 
         // POST: Groups/Edit/5
@@ -91,9 +91,9 @@ namespace FootballLeaguesSimulation.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CompetitionId")] Group @group)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CompetitionId")] Group group)
         {
-            if (id != @group.Id)
+            if (id != group.Id)
             {
                 return NotFound();
             }
@@ -102,12 +102,12 @@ namespace FootballLeaguesSimulation.Controllers
             {
                 try
                 {
-                    _context.Update(@group);
+                    _context.Update(group);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GroupExists(@group.Id))
+                    if (!GroupExists(group.Id))
                     {
                         return NotFound();
                     }
@@ -118,8 +118,8 @@ namespace FootballLeaguesSimulation.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", @group.CompetitionId);
-            return View(@group);
+            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", group.CompetitionId);
+            return View(group);
         }
 
         // GET: Groups/Delete/5
@@ -130,15 +130,15 @@ namespace FootballLeaguesSimulation.Controllers
                 return NotFound();
             }
 
-            var @group = await _context.Group
+            var group = await _context.Group
                 .Include(c => c.Competition)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (@group == null)
+            if (group == null)
             {
                 return NotFound();
             }
 
-            return View(@group);
+            return View(group);
         }
 
         // POST: Groups/Delete/5
@@ -146,8 +146,8 @@ namespace FootballLeaguesSimulation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var @group = await _context.Group.FindAsync(id);
-            _context.Group.Remove(@group);
+            var group = await _context.Group.FindAsync(id);
+            _context.Group.Remove(group);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

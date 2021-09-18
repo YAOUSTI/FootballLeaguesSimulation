@@ -26,7 +26,11 @@ namespace FootballLeaguesSimulation.Data
         {
             base.OnModelCreating(builder);
             builder.Entity<League>().HasData(
-                    new League { Id = 1, Name = "EUFA" }
+                    new League { 
+                        Id = 1, 
+                        Name = "EUFA",
+                        Logo = "https://w7.pngwing.com/pngs/145/829/png-transparent-uefa-champions-league-uefa-europa-league-uefa-super-cup-uefa-euro-2016-uefa-euro-2020-croatia-football-federation-blue-emblem-text-thumbnail.png",
+                    }
                 );
             builder.Entity<Season>().HasData(
                     new League { Id = 1, Name = "2017/2018" }
@@ -125,5 +129,6 @@ namespace FootballLeaguesSimulation.Data
                 }
             }
         }
+        public DbSet<FootballLeaguesSimulation.Models.TeamStanding> TeamStanding { get; set; }
     }
 }

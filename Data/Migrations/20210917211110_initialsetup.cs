@@ -13,7 +13,8 @@ namespace FootballLeaguesSimulation.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Logo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -189,10 +190,51 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TeamStanding",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MatchPlayed = table.Column<int>(type: "int", nullable: false),
+                    Wins = table.Column<int>(type: "int", nullable: false),
+                    Loses = table.Column<int>(type: "int", nullable: false),
+                    Draws = table.Column<int>(type: "int", nullable: false),
+                    GoalsFor = table.Column<int>(type: "int", nullable: false),
+                    GoalsAgaints = table.Column<int>(type: "int", nullable: false),
+                    GoalsDifference = table.Column<int>(type: "int", nullable: false),
+                    Points = table.Column<int>(type: "int", nullable: false),
+                    TeamId = table.Column<int>(type: "int", nullable: false),
+                    SeasonId = table.Column<int>(type: "int", nullable: false),
+                    CompetitionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TeamStanding", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TeamStanding_Competition_CompetitionId",
+                        column: x => x.CompetitionId,
+                        principalTable: "Competition",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TeamStanding_Season_SeasonId",
+                        column: x => x.SeasonId,
+                        principalTable: "Season",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_TeamStanding_Team_TeamId",
+                        column: x => x.TeamId,
+                        principalTable: "Team",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "League",
-                columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "EUFA" });
+                columns: new[] { "Id", "Logo", "Name" },
+                values: new object[] { 1, "https://w7.pngwing.com/pngs/145/829/png-transparent-uefa-champions-league-uefa-europa-league-uefa-super-cup-uefa-euro-2016-uefa-euro-2020-croatia-football-federation-blue-emblem-text-thumbnail.png", "EUFA" });
 
             migrationBuilder.InsertData(
                 table: "Season",
@@ -441,12 +483,30 @@ namespace FootballLeaguesSimulation.Data.Migrations
                 name: "IX_Team_GroupId",
                 table: "Team",
                 column: "GroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamStanding_CompetitionId",
+                table: "TeamStanding",
+                column: "CompetitionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamStanding_SeasonId",
+                table: "TeamStanding",
+                column: "SeasonId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamStanding_TeamId",
+                table: "TeamStanding",
+                column: "TeamId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Match");
+
+            migrationBuilder.DropTable(
+                name: "TeamStanding");
 
             migrationBuilder.DropTable(
                 name: "Round");

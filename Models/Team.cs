@@ -28,5 +28,7 @@ namespace FootballLeaguesSimulation.Models
         //A team can be in a group
         public int? GroupId { get; set; }
         public Group Group { get; set; }
+        //A team can have Standings
+        public virtual ICollection<TeamStanding> TeamStandings { get; set; }
     }
 }

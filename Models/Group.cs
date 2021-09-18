@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,8 +17,8 @@ namespace FootballLeaguesSimulation.Models
         public int? CompetitionId { get; set; }
         public Competition Competition { get; set; }
         //A group can have more than 1 team (has many)
-        public List<Team> Teams { get; set; }
+        public virtual ICollection<Team> Teams { get; set; }
         //A group can have more than 1 match (has many)
-        public List<Match> Matches { get; set; }
+        public virtual ICollection<Match> Matches { get; set; }
     }
 }

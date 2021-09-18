@@ -67,6 +67,67 @@ namespace FootballLeaguesSimulation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PlayedAt,Score1,Score2,Score1ET,Score2ET,Score1P,Score2P,Winner,HomeTeamId,GuestTeamId,CompetitionId,GroupId,RoundId")] Match match)
         {
+            var standingDetails1 = _context.TeamStanding.Find(match.HomeTeamId);
+            var standingDetails2 = _context.TeamStanding.Find(match.GuestTeamId); ;
+            if (match.GroupId != null)
+            {
+                if (standingDetails1 == null)
+                {
+                    standingDetails1 = new TeamStanding();
+                    var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
+                    var season = _context.Season.Where(s => s.Name == seasonName).ToList().First();
+
+                    standingDetails1.TeamId = (int)match.HomeTeamId;
+                    standingDetails1.SeasonId = season.Id;
+                    standingDetails1.CompetitionId = match.CompetitionId;
+                }
+                if (standingDetails2 == null)
+                {
+                    standingDetails2 = new TeamStanding();
+                    var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
+                    var season = _context.Season.Where(s => s.Name == seasonName).ToList().First();
+
+                    standingDetails2.TeamId = (int)match.GuestTeamId;
+                    standingDetails2.SeasonId = season.Id;
+                    standingDetails2.CompetitionId = match.CompetitionId;
+                }
+                if (standingDetails1.MatchPlayed == 6 && standingDetails2.MatchPlayed == 6)
+                {
+                    return View(match);
+                }
+                else if (match.Score1 == match.Score2)
+                {
+                    standingDetails1.Draws += 1;
+                    standingDetails2.Draws += 1;
+                    standingDetails1.Points += 1;
+                    standingDetails2.Points += 1;
+                }
+                else if (match.Score1 > match.Score2)
+                {
+                    standingDetails1.Wins += 1;
+                    standingDetails2.Loses += 1;
+                    standingDetails1.Points += 3;
+                }
+                else
+                {
+                    standingDetails1.Wins += 1;
+                    standingDetails2.Loses += 1;
+                    standingDetails1.Points += 3;
+                }
+                standingDetails1.MatchPlayed += 1;
+                standingDetails1.GoalsFor += match.Score1;
+                standingDetails1.GoalsAgaints += match.Score2;
+
+                standingDetails2.MatchPlayed += 1;
+                standingDetails2.GoalsFor += match.Score2;
+                standingDetails2.GoalsAgaints += match.Score1;
+
+                standingDetails1.GoalsDifference = standingDetails1.GoalsFor - standingDetails1.GoalsAgaints;
+                standingDetails2.GoalsDifference = standingDetails2.GoalsFor - standingDetails2.GoalsAgaints;
+
+                _context.TeamStanding.Add(standingDetails1);
+                _context.Update(standingDetails2);
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(match);
@@ -77,7 +138,9 @@ namespace FootballLeaguesSimulation.Controllers
             ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Id", match.GroupId);
             ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Id", match.GuestTeamId);
             ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Id", match.HomeTeamId);
-            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Id", match.RoundId);
+            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Id", match.RoundId); 
+
+           
             return View(match);
         }
 

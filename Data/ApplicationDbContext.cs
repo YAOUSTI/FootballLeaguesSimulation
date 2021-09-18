@@ -22,6 +22,7 @@ namespace FootballLeaguesSimulation.Data
         public DbSet<FootballLeaguesSimulation.Models.Group> Group { get; set; }
         public DbSet<FootballLeaguesSimulation.Models.Team> Team { get; set; }
         public DbSet<FootballLeaguesSimulation.Models.Match> Match { get; set; }
+        public DbSet<FootballLeaguesSimulation.Models.TeamStanding> TeamStanding { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -59,7 +60,8 @@ namespace FootballLeaguesSimulation.Data
                     new Group { Id = 5, Name = "Group E", CompetitionId = 1 },
                     new Group { Id = 6, Name = "Group F", CompetitionId = 1 },
                     new Group { Id = 7, Name = "Group G", CompetitionId = 1 },
-                    new Group { Id = 8, Name = "Group H", CompetitionId = 1 }
+                    new Group { Id = 8, Name = "Group H", CompetitionId = 1 },
+                    new Group { Id = 9, Name = "Null", CompetitionId = 1 }
                 );
             var j = 1;
             using (StreamReader r = new StreamReader(@"Data/groups.json"))
@@ -87,48 +89,48 @@ namespace FootballLeaguesSimulation.Data
                 }
             }
 
-            var k = 1;
-            using (StreamReader r = new StreamReader(@"Data/matchs.json"))
-            {
-                string json = r.ReadToEnd();
-                var items = JObject.Parse(json);
-                foreach (var match in items["matchs"])
-                {
-                    var w = 0;
-                    if((int)match["score_1"] > (int)match["score_2"]){
-                        w = (int)match["team_home"]["id"];
-                    }
-                    else if((int)match["score_1"] < (int)match["score_2"])
-                    {
-                        w = (int)match["team_away"]["id"];
-                    }
-                    else
-                    {
-                        w = 0;
-                    }
+            //var k = 1;
+            //using (StreamReader r = new StreamReader(@"Data/matchs.json"))
+            //{
+            //    string json = r.ReadToEnd();
+            //    var items = JObject.Parse(json);
+            //    foreach (var match in items["matchs"])
+            //    {
+            //        var w = 0;
+            //        if((int)match["score_1"] > (int)match["score_2"]){
+            //            w = (int)match["team_home"]["id"];
+            //        }
+            //        else if((int)match["score_1"] < (int)match["score_2"])
+            //        {
+            //            w = (int)match["team_away"]["id"];
+            //        }
+            //        else
+            //        {
+            //            w = 0;
+            //        }
 
-                    builder.Entity<Match>().HasData(
-                        new Match
-                        {
-                            Id = k++,
-                            HomeTeamId = ((int)match["team_home"]["id"]),
-                            GuestTeamId = ((int)match["team_away"]["id"]),
-                            Score1 = ((int)match["score_1"]),
-                            Score2 = ((int)match["score_2"]),
-                            Score1ET = ((int?)match["score_extra_1"]),
-                            Score2ET = ((int?)match["score_extra_2"]),
-                            Score1P = ((int?)match["penalties_1"]),
-                            Score2P = ((int?)match["penalties_2"]),
-                            CompetitionId = 1,
-                            GroupId = ((int)match["team_home"]["group_id"]),
-                            RoundId = 1,
-                            PlayedAt = ((DateTime)match["played_at"]),
-                            Winner = w,
-                        }
-                    );
-                }
-            }
+            //        builder.Entity<Match>().HasData(
+            //            new Match
+            //            {
+            //                Id = k++,
+            //                HomeTeamId = ((int)match["team_home"]["id"]),
+            //                GuestTeamId = ((int)match["team_away"]["id"]),
+            //                Score1 = ((int)match["score_1"]),
+            //                Score2 = ((int)match["score_2"]),
+            //                Score1ET = ((int?)match["score_extra_1"]),
+            //                Score2ET = ((int?)match["score_extra_2"]),
+            //                Score1P = ((int?)match["penalties_1"]),
+            //                Score2P = ((int?)match["penalties_2"]),
+            //                CompetitionId = 1,
+            //                GroupId = ((int)match["team_home"]["group_id"]),
+            //                RoundId = 1,
+            //                PlayedAt = ((DateTime)match["played_at"]),
+            //                Winner = w,
+            //            }
+            //        );
+            //    }
+            //}
         }
-        public DbSet<FootballLeaguesSimulation.Models.TeamStanding> TeamStanding { get; set; }
+        
     }
 }

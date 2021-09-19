@@ -16,50 +16,48 @@
 @foreach (var item in Model) {
         <tr>
             <td class="align-middle small">
-                @item.PlayedAt.Day/@item.PlayedAt.Month/@item.PlayedAt.Year
+               @item.PlayedAt.Day/@item.PlayedAt.Month/@item.PlayedAt.Year
             </td>
             <td class="row justify-content-end align-middle small">
-                <div class="border-0">
-                    @Html.DisplayFor(modelItem => item.HomeTeam.Name)
-                <img style="height:40px; width:40px" src="@Url.Content(item.HomeTeam.Logo)" alt="@item.HomeTeam.Name" />
-            </div>
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Score1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score1ET)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score1P)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score2P)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score2ET)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Score2)
-        </td>
-        <td class="align-middle small">
-            <img style="height:40px; width:40px" src="@Url.Content(item.GuestTeam.Logo)" alt="@item.GuestTeam.Name" />
-            @Html.DisplayFor(modelItem => item.GuestTeam.Name)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Competition.Name)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Round.Name)
-        </td>
-        <td class="align-middle">
-            @Html.DisplayFor(modelItem => item.Group.Name)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
+                <div class="border-0">@Html.DisplayFor(modelItem => item.HomeTeam.Name)
+                <img style="height:40px; width:40px" src="@Url.Content(item.HomeTeam.Logo)" alt="@item.HomeTeam.Name" /></div>
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Score1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score1ET)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score1P)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score2P)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score2ET)
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Score2)
+            </td>
+            <td class="align-middle small">
+                <img style="height:40px; width:40px" src="@Url.Content(item.GuestTeam.Logo)" alt="@item.GuestTeam.Name" />
+                @Html.DisplayFor(modelItem => item.GuestTeam.Name)
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Competition.Name)
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Group.Name)
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Round.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
         </tr>
 }
     </tbody>

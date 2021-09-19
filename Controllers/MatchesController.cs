@@ -52,11 +52,11 @@ namespace FootballLeaguesSimulation.Controllers
         // GET: Matches/Create
         public IActionResult Create()
         {
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Name");
-            ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Name");
-            ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Name");
-            ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Name");
-            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Name");
+            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id");
+            ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Id");
+            ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Id");
+            ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Id");
+            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Id");
             return View();
         }
 
@@ -67,10 +67,9 @@ namespace FootballLeaguesSimulation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PlayedAt,Score1,Score2,Score1ET,Score2ET,Score1P,Score2P,Winner,HomeTeamId,GuestTeamId,CompetitionId,GroupId,RoundId")] Match match)
         {
-            //If this was a group stage match this process will start storing all of match details and the standing of each team 
-            var standingDetails1 = _context.TeamStanding.FirstOrDefault(s=>s.TeamId == match.HomeTeamId);
-            var standingDetails2 = _context.TeamStanding.FirstOrDefault(s=>s.TeamId == match.GuestTeamId); 
-            if (match.GroupId != 9)
+            var standingDetails1 = _context.TeamStanding.Find(match.HomeTeamId);
+            var standingDetails2 = _context.TeamStanding.Find(match.GuestTeamId); ;
+            if (match.GroupId != null)
             {
                 if (standingDetails1 == null)
                 {
@@ -78,7 +77,7 @@ namespace FootballLeaguesSimulation.Controllers
                     var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
                     var season = _context.Season.Where(s => s.Name == seasonName).ToList().First();
 
-                    standingDetails1.TeamId = match.HomeTeamId;
+                    standingDetails1.TeamId = (int)match.HomeTeamId;
                     standingDetails1.SeasonId = season.Id;
                     standingDetails1.CompetitionId = match.CompetitionId;
                 }
@@ -88,7 +87,7 @@ namespace FootballLeaguesSimulation.Controllers
                     var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
                     var season = _context.Season.Where(s => s.Name == seasonName).ToList().First();
 
-                    standingDetails2.TeamId = match.GuestTeamId;
+                    standingDetails2.TeamId = (int)match.GuestTeamId;
                     standingDetails2.SeasonId = season.Id;
                     standingDetails2.CompetitionId = match.CompetitionId;
                 }
@@ -102,22 +101,18 @@ namespace FootballLeaguesSimulation.Controllers
                     standingDetails2.Draws += 1;
                     standingDetails1.Points += 1;
                     standingDetails2.Points += 1;
-                    match.Winner = 0;
                 }
                 else if (match.Score1 > match.Score2)
                 {
                     standingDetails1.Wins += 1;
                     standingDetails2.Loses += 1;
                     standingDetails1.Points += 3;
-
-                    match.Winner = match.HomeTeamId;
                 }
                 else
                 {
-                    standingDetails1.Loses += 1;
-                    standingDetails2.Wins += 1;
+                    standingDetails1.Wins += 1;
+                    standingDetails2.Loses += 1;
                     standingDetails1.Points += 3;
-                    match.Winner = match.GuestTeamId;
                 }
                 standingDetails1.MatchPlayed += 1;
                 standingDetails1.GoalsFor += match.Score1;
@@ -130,8 +125,8 @@ namespace FootballLeaguesSimulation.Controllers
                 standingDetails1.GoalsDifference = standingDetails1.GoalsFor - standingDetails1.GoalsAgaints;
                 standingDetails2.GoalsDifference = standingDetails2.GoalsFor - standingDetails2.GoalsAgaints;
 
-                _context.TeamStanding.Update(standingDetails1);
-                _context.TeamStanding.Update(standingDetails2);
+                _context.TeamStanding.Add(standingDetails1);
+                _context.Update(standingDetails2);
             }
             if (ModelState.IsValid)
             {
@@ -139,11 +134,11 @@ namespace FootballLeaguesSimulation.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Name", match.CompetitionId);
-            ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Name", match.GroupId);
-            ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Name", match.GuestTeamId);
-            ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Name", match.HomeTeamId);
-            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Name", match.RoundId); 
+            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", match.CompetitionId);
+            ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Id", match.GroupId);
+            ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Id", match.GuestTeamId);
+            ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Id", match.HomeTeamId);
+            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Id", match.RoundId); 
 
            
             return View(match);
@@ -162,11 +157,11 @@ namespace FootballLeaguesSimulation.Controllers
             {
                 return NotFound();
             }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Name", match.CompetitionId);
-            ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Name", match.GroupId);
-            ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Name", match.GuestTeamId);
-            ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Name", match.HomeTeamId);
-            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Name", match.RoundId);
+            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", match.CompetitionId);
+            ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Id", match.GroupId);
+            ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Id", match.GuestTeamId);
+            ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Id", match.HomeTeamId);
+            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Id", match.RoundId);
             return View(match);
         }
 
@@ -202,11 +197,11 @@ namespace FootballLeaguesSimulation.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Name", match.CompetitionId);
-            ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Name", match.GroupId);
-            ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Name", match.GuestTeamId);
-            ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Name", match.HomeTeamId);
-            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Name", match.RoundId);
+            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", match.CompetitionId);
+            ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Id", match.GroupId);
+            ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Id", match.GuestTeamId);
+            ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Id", match.HomeTeamId);
+            ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Id", match.RoundId);
             return View(match);
         }
 

@@ -98,7 +98,7 @@
             <td></td>
             <td colspan="4">
                 <div class="form-group">
-                    <label asp-for="CompetitionId" class="control-label"></label>
+                    <label asp-for="CompetitionId" class="control-label">Competition</label>
                     <select asp-for="CompetitionId" class="form-control" asp-items="ViewBag.CompetitionId"></select>
                 </div>
             </td>
@@ -107,7 +107,7 @@
             <td></td>
             <td colspan="4">
                 <div class="form-group">
-                    <label asp-for="GroupId" class="control-label"></label>
+                    <label asp-for="GroupId" class="control-label">Group</label>
                     <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupId"></select>
                 </div>
             </td>
@@ -116,7 +116,7 @@
             <td></td>
             <td colspan="4">
                 <div class="form-group">
-                    <label asp-for="RoundId" class="control-label"></label>
+                    <label asp-for="RoundId" class="control-label">Round</label>
                     <select asp-for="RoundId" class="form-control" asp-items="ViewBag.RoundId"></select>
                 </div>
             </td>
@@ -152,7 +152,6 @@
                 deleted = false;
             }
         });
-
     </script>
 }
 

@@ -22,9 +22,9 @@ namespace FootballLeaguesSimulation.Models
 
         
         //A match belongs to two teams
-        public int? HomeTeamId { get; set; }
+        public int HomeTeamId { get; set; }
         public virtual Team HomeTeam { get; set; }
-        public int? GuestTeamId { get; set; }
+        public int GuestTeamId { get; set; }
         public virtual Team GuestTeam { get; set; }
 
         //A match belongs to a competiton

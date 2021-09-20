@@ -59,13 +59,13 @@
             <td></td>
             <td>
                 <div class="form-group">
-                    <input asp-for="Score1ET" class="form-control" style="width:70px" min="0" max="30" value="0" />
+                    <input asp-for="Score1ET" class="form-control" style="width:70px" min="0" max="30" />
                     <span asp-validation-for="Score1ET" class="text-danger"></span>
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    <input asp-for="Score2ET" class="form-control" style="width:70px" min="0" max="30" value="0" />
+                    <input asp-for="Score2ET" class="form-control" style="width:70px" min="0" max="30" />
                     <span asp-validation-for="Score2ET" class="text-danger"></span>
                 </div>
             </td>
@@ -82,13 +82,13 @@
             <td></td>
             <td>
                 <div class="form-group">
-                    <input asp-for="Score1P" class="form-control" style="width:70px" min="0" max="30" value="0" />
+                    <input asp-for="Score1P" class="form-control" style="width:70px" min="0" max="30" />
                     <span asp-validation-for="Score1P" class="text-danger"></span>
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    <input asp-for="Score2P" class="form-control" style="width:70px" min="0" max="30" value="0" />
+                    <input asp-for="Score2P" class="form-control" style="width:70px" min="0" max="30" />
                     <span asp-validation-for="Score2P" class="text-danger"></span>
                 </div>
             </td>
@@ -135,21 +135,59 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $('#RoundId > option[value=' + 2 + ']').remove();
+            $('#RoundId > option[value=' + 3 + ']').remove();
+            $('#RoundId > option[value=' + 4 + ']').remove();
+            $('#RoundId > option[value=' + 5 + ']').remove();
+        });
         var deleted = false;
+        var i = 1;
         $('#GroupId').change(function () {
+
             var val = $(this).val();
-            var select = document.getElementById("RoundId");
-            var option = document.createElement("option");
-            option.value = 1;
-            option.text = "Groups";
-            option.selected = true;
+            var select = document.getElementById("RoundId")
+            var groups = document.createElement("option");
+            var round16 = document.createElement("option");
+            var round8 = document.createElement("option");
+            var semiFinal = document.createElement("option");
+            var final = document.createElement("option");
+
+            groups.value = 1;
+            groups.text = "Groups";
+            groups.selected = true;
+
+            round16.value = 2;
+            round16.text = "Round of 16";
+
+            round8.value = 3;
+            round8.text = "Round of 8";
+
+            semiFinal.value = 4;
+            semiFinal.text = "Semi Final";
+
+            final.value = 5;
+            final.text = "Final";
+
             if (val == 9 && !deleted) {
-                $('#RoundId > option[value=' + option.value + ']').remove();
+                if (i == 1) {
+                    select.add(round16, null);
+                    select.add(round8, null);
+                    select.add(semiFinal, null);
+                    select.add(final, null);
+                }
+                $('#RoundId > option[value=' + groups.value + ']').remove();
                 deleted = true;
+                i++;
             }
             if (val != 9 && deleted) {
-                select.add(option, null);
+                $('#RoundId > option[value=' + round16.value + ']').remove();
+                $('#RoundId > option[value=' + round8.value + ']').remove();
+                $('#RoundId > option[value=' + semiFinal.value + ']').remove();
+                $('#RoundId > option[value=' + final.value + ']').remove();
+                select.add(groups, null);
                 deleted = false;
+                i = 1;
             }
         });
     </script>

@@ -269,8 +269,8 @@ namespace FootballLeaguesSimulation.Data.Migrations
                 {
                     { 1, 1, null, "Groups", null },
                     { 2, 1, null, "Round of 16", null },
-                    { 3, 1, null, "Round of 8", null },
-                    { 4, 1, null, "Round of 4", null },
+                    { 3, 1, null, "Quarter Finals", null },
+                    { 4, 1, null, "Semi Final", null },
                     { 5, 1, null, "Final", null }
                 });
 

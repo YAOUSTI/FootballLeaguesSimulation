@@ -48,8 +48,8 @@ namespace FootballLeaguesSimulation.Data
             builder.Entity<Round>().HasData(
                     new Round { Id = 1, Name = "Groups", CompetitionId = 1 },
                     new Round { Id = 2, Name = "Round of 16", CompetitionId = 1 },
-                    new Round { Id = 3, Name = "Round of 8", CompetitionId = 1 },
-                    new Round { Id = 4, Name = "Round of 4", CompetitionId = 1 },
+                    new Round { Id = 3, Name = "Quarter Finals", CompetitionId = 1 },
+                    new Round { Id = 4, Name = "Semi Final", CompetitionId = 1 },
                     new Round { Id = 5, Name = "Final", CompetitionId = 1 }
                 );
             builder.Entity<Group>().HasData(

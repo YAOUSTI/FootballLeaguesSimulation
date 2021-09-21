@@ -25,19 +25,21 @@
                         @Html.DisplayFor(modelItem => item.HomeTeam.Name)
                         <img style="height:40px; width:40px" src="@Url.Content(item.HomeTeam.Logo)" alt="@item.HomeTeam.Name" />
                     </div>
-                    <div class="col">
+                    <div class="col align-self-center text-center" >
                         <div class="row">
                             <div class="col"> @Html.DisplayFor(modelItem => item.Score1)</div>
                             <div class="col"> @Html.DisplayFor(modelItem => item.Score2)</div>
                         </div>
-                        <div class="row">
-                            <div class="col"> @Html.DisplayFor(modelItem => item.Score1ET)</div>
-                            <div class="col">@Html.DisplayFor(modelItem => item.Score2ET)</div>
-                        </div>
-                        <div class="row">
-                            <div class="col"> @Html.DisplayFor(modelItem => item.Score1P)</div>
-                            <div class="col">@Html.DisplayFor(modelItem => item.Score2P)</div>
-                        </div>
+                        @if(item.Score1ET != null || item.Score1P != null) { 
+                            <div class="row">
+                                <div class="col  text-right">( @Html.DisplayFor(modelItem => item.Score1ET)</div>
+                                <div class="col  text-left">@Html.DisplayFor(modelItem => item.Score2ET) ET)</div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-right">( @Html.DisplayFor(modelItem => item.Score1P)</div>
+                                <div class="col text-left">@Html.DisplayFor(modelItem => item.Score2P) P)</div>
+                            </div>
+                        }
                     </div>
                     <div class="col">
                         <img style="height:40px; width:40px" src="@Url.Content(item.GuestTeam.Logo)" alt="@item.GuestTeam.Name" />

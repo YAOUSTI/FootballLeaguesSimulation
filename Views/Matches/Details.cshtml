@@ -3,95 +3,65 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
+
+    var homeImgSrc = Model.HomeTeam.Logo;
+    var guestImgSrc = Model.GuestTeam.Logo;
+    var shortDateFormat = Model.PlayedAt.ToString("D");
+}
 <h1>Details</h1>
 
 <div>
-    <h4>Match</h4>
+    <h4>Match - @Html.DisplayFor(modelItem => modelItem.Competition.Name)</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PlayedAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PlayedAt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score1)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score1)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score2)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score2)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score1ET)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score1ET)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score2ET)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score2ET)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score1P)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score1P)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score2P)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score2P)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Winner)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Winner)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HomeTeam)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HomeTeam.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GuestTeam)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GuestTeam.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Competition)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Competition.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Group)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Group.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Round)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Round.Id)
-        </dd>
-    </dl>
+    <div class="container-fluid small">
+        <div class="row justify-content-center w-100">@Html.DisplayFor(modelItem => modelItem.Group.Name)</div>
+        <div class="row justify-content-center w-100">@Html.DisplayFor(modelItem => modelItem.Round.Name)</div>
+        <div class="row">
+            <div class="col text-right">
+                @Html.DisplayFor(modelItem => modelItem.HomeTeam.Name)
+                <img style="height:100px; width:100px" src="@homeImgSrc" alt="@homeImgSrc" />
+            </div>
+            <div class="col text-center align-self-center">
+                <div class="row">
+                    <div class="col"> @Html.DisplayFor(modelItem => modelItem.Score1)</div>
+                    <div class="col"> @Html.DisplayFor(modelItem => modelItem.Score2)</div>
+                </div>
+                <div id="ExtraTime" class="row">
+                    <div id="CheckScoreET" class="col text-right">( @Html.DisplayFor(modelItem => modelItem.Score1ET)</div>
+                    <div class="col text-left">@Html.DisplayFor(modelItem => modelItem.Score2ET) ET)</div>
+                </div>
+                <div id="Penalties" class="row ">
+                    <div id="CheckScoreP" class="col text-right"> ( @Html.DisplayFor(modelItem => modelItem.Score1P)</div>
+                    <div class="col text-left">@Html.DisplayFor(modelItem => modelItem.Score2P) P)</div>
+                </div>
+            </div>
+            <div class="col">
+                <img style="height:100px; width:100px" src="@guestImgSrc" alt="@guestImgSrc" />
+                @Html.DisplayFor(modelItem => modelItem.GuestTeam.Name)
+            </div>
+        </div>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var extraTime = document.getElementById("ExtraTime");
+            var penalties = document.getElementById("Penalties");
+            var et = document.getElementById("CheckScoreET");
+            var p = document.getElementById("CheckScoreP");
+            console.log(et.innerText);
+            if (et.innerText == "(" || p.innerText == "(") {
+                extraTime.remove();
+                penalties.remove();
+            }
+        });
+    </script>
+}

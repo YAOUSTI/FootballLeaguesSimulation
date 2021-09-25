@@ -12,161 +12,81 @@ namespace FootballLeaguesSimulation.Controllers
 {
     public class TeamStandingsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private ApplicationDbContext _context;
+
 
         public TeamStandingsController(ApplicationDbContext context)
         {
             _context = context;
         }
-
-        // GET: TeamStandings
-        public async Task<IActionResult> Index()
+        public void GroupStanding(TeamStanding standingDetails1, TeamStanding standingDetails2, DateTime playedAt, int homeTeam, int guestTeam, int score1, int score2, int competition,int round)
         {
-            var applicationDbContext = _context.TeamStanding.Include(t => t.Competition).Include(t => t.Season).Include(t => t.Team);
-            return View(await applicationDbContext.ToListAsync());
+            if (score1 == score2)
+            {
+                standingDetails1.Draws += 1;
+                standingDetails2.Draws += 1;
+                standingDetails1.Points += 1;
+                standingDetails2.Points += 1;
+            }
+            else if (score1 > score2)
+            {
+                standingDetails1.Wins += 1;
+                standingDetails2.Loses += 1;
+                standingDetails1.Points += 3;
+            }
+            else
+            {
+                standingDetails1.Loses += 1;
+                standingDetails2.Wins += 1;
+                standingDetails1.Points += 3;
+            }
+            standingDetails1.MatchPlayed += 1;
+            standingDetails1.GoalsFor += score1;
+            standingDetails1.GoalsAgaints += score2;
+
+            standingDetails2.MatchPlayed += 1;
+            standingDetails2.GoalsFor += score2;
+            standingDetails2.GoalsAgaints += score1;
+
+            standingDetails1.GoalsDifference = standingDetails1.GoalsFor - standingDetails1.GoalsAgaints;
+            standingDetails2.GoalsDifference = standingDetails2.GoalsFor - standingDetails2.GoalsAgaints;
+
+            _context.TeamStanding.Update(standingDetails1);
+            _context.TeamStanding.Update(standingDetails2);
         }
-
-        // GET: TeamStandings/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public void EleminationStanding(TeamStanding standingDetails1, TeamStanding standingDetails2, DateTime playedAt, int homeTeam, int guestTeam, int winner, int score1, int score2, int extraTime1, int extraTime2, int penalties1, int penalties2, int competition, int round,int leg)
         {
-            if (id == null)
+            if (score1 == score2)
             {
-                return NotFound();
+                standingDetails1.Draws += 1;
+                standingDetails2.Draws += 1;
             }
-
-            var teamStanding = await _context.TeamStanding
-                .Include(t => t.Competition)
-                .Include(t => t.Season)
-                .Include(t => t.Team)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (teamStanding == null)
+            else if (score1 > score2)
             {
-                return NotFound();
+                standingDetails1.Wins += 1;
+                standingDetails2.Loses += 1;
+                standingDetails1.Points += 3;
             }
-
-            return View(teamStanding);
-        }
-
-        // GET: TeamStandings/Create
-        public IActionResult Create()
-        {
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id");
-            ViewData["SeasonId"] = new SelectList(_context.Season, "Id", "Id");
-            ViewData["TeamId"] = new SelectList(_context.Team, "Id", "Id");
-            return View();
-        }
-
-        // POST: TeamStandings/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MatchPlayed,Wins,Loses,Draws,GoalsFor,GoalsAgaints,GoalsDifference,Points,TeamId,SeasonId,CompetitionId")] TeamStanding teamStanding)
-        {
-            if (ModelState.IsValid)
+            else
             {
-                _context.Add(teamStanding);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                standingDetails1.Loses += 1;
+                standingDetails2.Wins += 1;
+                standingDetails1.Points += 3;
             }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", teamStanding.CompetitionId);
-            ViewData["SeasonId"] = new SelectList(_context.Season, "Id", "Id", teamStanding.SeasonId);
-            ViewData["TeamId"] = new SelectList(_context.Team, "Id", "Id", teamStanding.TeamId);
-            return View(teamStanding);
-        }
+            standingDetails1.MatchPlayed += 1;
+            standingDetails1.GoalsFor += score1;
+            standingDetails1.GoalsAgaints += score2;
 
-        // GET: TeamStandings/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            standingDetails2.MatchPlayed += 1;
+            standingDetails2.GoalsFor += score2;
+            standingDetails2.GoalsAgaints += score1;
 
-            var teamStanding = await _context.TeamStanding.FindAsync(id);
-            if (teamStanding == null)
-            {
-                return NotFound();
-            }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", teamStanding.CompetitionId);
-            ViewData["SeasonId"] = new SelectList(_context.Season, "Id", "Id", teamStanding.SeasonId);
-            ViewData["TeamId"] = new SelectList(_context.Team, "Id", "Id", teamStanding.TeamId);
-            return View(teamStanding);
-        }
+            standingDetails1.GoalsDifference = standingDetails1.GoalsFor - standingDetails1.GoalsAgaints;
+            standingDetails2.GoalsDifference = standingDetails2.GoalsFor - standingDetails2.GoalsAgaints;
 
-        // POST: TeamStandings/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MatchPlayed,Wins,Loses,Draws,GoalsFor,GoalsAgaints,GoalsDifference,Points,TeamId,SeasonId,CompetitionId")] TeamStanding teamStanding)
-        {
-            if (id != teamStanding.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(teamStanding);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TeamStandingExists(teamStanding.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Id", teamStanding.CompetitionId);
-            ViewData["SeasonId"] = new SelectList(_context.Season, "Id", "Id", teamStanding.SeasonId);
-            ViewData["TeamId"] = new SelectList(_context.Team, "Id", "Id", teamStanding.TeamId);
-            return View(teamStanding);
-        }
-
-        // GET: TeamStandings/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var teamStanding = await _context.TeamStanding
-                .Include(t => t.Competition)
-                .Include(t => t.Season)
-                .Include(t => t.Team)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (teamStanding == null)
-            {
-                return NotFound();
-            }
-
-            return View(teamStanding);
-        }
-
-        // POST: TeamStandings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var teamStanding = await _context.TeamStanding.FindAsync(id);
-            _context.TeamStanding.Remove(teamStanding);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool TeamStandingExists(int id)
-        {
-            return _context.TeamStanding.Any(e => e.Id == id);
+            _context.TeamStanding.Update(standingDetails1);
+            _context.TeamStanding.Update(standingDetails2);
+        SkipToEnd:;
         }
     }
 }

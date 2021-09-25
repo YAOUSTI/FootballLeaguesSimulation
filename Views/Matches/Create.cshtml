@@ -10,6 +10,10 @@
 <h4>Match</h4>
 <hr />
 <form asp-action="Create">
+    @if (!string.IsNullOrEmpty(ViewBag.msg))
+    {
+    <script type="text/javascript">alert('@ViewBag.msg');</script>
+    }
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <table class="justify-content-center text-center">
         <tr>
@@ -126,6 +130,7 @@
         <input type="submit" value="Create" class="btn btn-primary" />
     </div>
 </form>
+
 
 <div>
     <a asp-action="Index">Back to List</a>

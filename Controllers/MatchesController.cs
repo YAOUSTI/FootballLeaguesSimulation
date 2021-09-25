@@ -70,81 +70,71 @@ namespace FootballLeaguesSimulation.Controllers
             //If this was a group stage match this process will start storing all of match details and the standing of each team 
             var standingDetails1 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.HomeTeamId);
             var standingDetails2 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.GuestTeamId);
-            if (match.GroupId != 9)
+
+            Season season = new Season();
+
+            if (standingDetails1 == null)
             {
-                if (standingDetails1 == null)
-                {
-                    standingDetails1 = new TeamStanding();
-                    var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
-                    var season = _context.Season.Where(s => s.Name == seasonName).ToList().First();
+                standingDetails1 = new TeamStanding();
+                var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
+                season = _context.Season.FirstOrDefault(s => s.Name == seasonName);
 
-                    standingDetails1.TeamId = match.HomeTeamId;
-                    standingDetails1.SeasonId = season.Id;
-                    standingDetails1.CompetitionId = match.CompetitionId;
-                }
-                if (standingDetails2 == null)
-                {
-                    standingDetails2 = new TeamStanding();
-                    var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
-                    var season = _context.Season.Where(s => s.Name == seasonName).ToList().First();
-
-                    standingDetails2.TeamId = match.GuestTeamId;
-                    standingDetails2.SeasonId = season.Id;
-                    standingDetails2.CompetitionId = match.CompetitionId;
-                }
-                if (standingDetails1.MatchPlayed == 6 && standingDetails2.MatchPlayed == 6)
-                {
-                    return View(match);
-                }
-                else if (match.Score1 == match.Score2)
-                {
-                    standingDetails1.Draws += 1;
-                    standingDetails2.Draws += 1;
-                    standingDetails1.Points += 1;
-                    standingDetails2.Points += 1;
-                    match.Winner = 0;
-                }
-                else if (match.Score1 > match.Score2)
-                {
-                    standingDetails1.Wins += 1;
-                    standingDetails2.Loses += 1;
-                    standingDetails1.Points += 3;
-
-                    match.Winner = match.HomeTeamId;
-                }
-                else
-                {
-                    standingDetails1.Loses += 1;
-                    standingDetails2.Wins += 1;
-                    standingDetails1.Points += 3;
-                    match.Winner = match.GuestTeamId;
-                }
-                standingDetails1.MatchPlayed += 1;
-                standingDetails1.GoalsFor += match.Score1;
-                standingDetails1.GoalsAgaints += match.Score2;
-
-                standingDetails2.MatchPlayed += 1;
-                standingDetails2.GoalsFor += match.Score2;
-                standingDetails2.GoalsAgaints += match.Score1;
-
-                standingDetails1.GoalsDifference = standingDetails1.GoalsFor - standingDetails1.GoalsAgaints;
-                standingDetails2.GoalsDifference = standingDetails2.GoalsFor - standingDetails2.GoalsAgaints;
-
-                _context.TeamStanding.Update(standingDetails1);
-                _context.TeamStanding.Update(standingDetails2);
+                standingDetails1.TeamId = match.HomeTeamId;
+                standingDetails1.SeasonId = season.Id;
+                standingDetails1.CompetitionId = match.CompetitionId;
+                standingDetails1.RoundId = match.RoundId;
             }
+
+            if (standingDetails2 == null)
+            {
+                standingDetails2 = new TeamStanding();
+                var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
+                season = _context.Season.FirstOrDefault(s => s.Name == seasonName);
+
+                standingDetails2.TeamId = match.HomeTeamId;
+                standingDetails2.SeasonId = season.Id;
+                standingDetails2.CompetitionId = match.CompetitionId;
+                standingDetails2.RoundId = match.RoundId;
+            }
+
+            if (match.GroupId != 9 && match.RoundId == 1)
+            {
+                if (standingDetails2 != null && standingDetails2 != null)
+                {
+                    if (standingDetails1.MatchPlayed == 6 || standingDetails2.MatchPlayed == 6)
+                    {
+                        goto SkipToEnd;
+                    }
+                }
+                TeamStandingsController teamStandings = new TeamStandingsController(_context);
+                teamStandings.GroupStanding(
+                    standingDetails1,
+                    standingDetails2,
+                    match.PlayedAt,
+                    match.HomeTeamId,
+                    match.GuestTeamId,
+                    match.Score1,
+                    match.Score2,
+                    match.CompetitionId,
+                    match.RoundId);
+                if (match.Score1 > match.Score2) match.Winner = match.HomeTeamId;
+                if (match.Score1 < match.Score2) match.Winner = match.GuestTeamId;
+            }
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(match);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            SkipToEnd:
             ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Name", match.CompetitionId);
             ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Name", match.GroupId);
             ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Name", match.GuestTeamId);
             ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Name", match.HomeTeamId);
             ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Name", match.RoundId);
-
+            ViewBag.msg = "Attention! The match you are trying to create has already been played or a team has played full group matches";
 
             return View(match);
         }

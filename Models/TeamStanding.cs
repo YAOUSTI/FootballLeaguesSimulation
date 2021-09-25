@@ -19,6 +19,7 @@ namespace FootballLeaguesSimulation.Models
         public int GoalsAgaints { get; set; }
         public int GoalsDifference { get; set; }
         public int Points { get; set; }
+        public int Leg { get; set; }
 
         //Standings belongs to a team
         public int TeamId { get; set; }
@@ -31,5 +32,9 @@ namespace FootballLeaguesSimulation.Models
         //Standings belongs to a competition
         public int CompetitionId { get; set; }
         public Competition Competition { get; set; }
+
+        //Standings belongs to a round
+        public int RoundId { get; set; }
+        public Round Round { get; set; }
     }
 }

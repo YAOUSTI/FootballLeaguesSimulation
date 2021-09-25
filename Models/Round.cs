@@ -20,5 +20,7 @@ namespace FootballLeaguesSimulation.Models
         public Competition Competition { get; set; }
         //A round can have more than 1 match (has many)
         public virtual ICollection<Match> Matches { get; set; }
+        //A round have a list of Standings
+        public virtual ICollection<TeamStanding> TeamStandings { get; set; }
     }
 }

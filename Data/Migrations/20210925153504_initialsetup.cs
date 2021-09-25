@@ -149,11 +149,11 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     Score1P = table.Column<int>(type: "int", nullable: true),
                     Score2P = table.Column<int>(type: "int", nullable: true),
                     Winner = table.Column<int>(type: "int", nullable: false),
-                    HomeTeamId = table.Column<int>(type: "int", nullable: true),
-                    GuestTeamId = table.Column<int>(type: "int", nullable: true),
+                    HomeTeamId = table.Column<int>(type: "int", nullable: false),
+                    GuestTeamId = table.Column<int>(type: "int", nullable: false),
                     CompetitionId = table.Column<int>(type: "int", nullable: false),
                     GroupId = table.Column<int>(type: "int", nullable: true),
-                    RoundId = table.Column<int>(type: "int", nullable: true)
+                    RoundId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -175,19 +175,19 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         column: x => x.RoundId,
                         principalTable: "Round",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Match_Team_GuestTeamId",
                         column: x => x.GuestTeamId,
                         principalTable: "Team",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Match_Team_HomeTeamId",
                         column: x => x.HomeTeamId,
                         principalTable: "Team",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,9 +204,11 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     GoalsAgaints = table.Column<int>(type: "int", nullable: false),
                     GoalsDifference = table.Column<int>(type: "int", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false),
+                    Leg = table.Column<int>(type: "int", nullable: false),
                     TeamId = table.Column<int>(type: "int", nullable: false),
                     SeasonId = table.Column<int>(type: "int", nullable: false),
-                    CompetitionId = table.Column<int>(type: "int", nullable: false)
+                    CompetitionId = table.Column<int>(type: "int", nullable: false),
+                    RoundId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -217,6 +219,12 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         principalTable: "Competition",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TeamStanding_Round_RoundId",
+                        column: x => x.RoundId,
+                        principalTable: "Round",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_TeamStanding_Season_SeasonId",
                         column: x => x.SeasonId,
@@ -259,7 +267,7 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     { 6, 1, "Group F" },
                     { 7, 1, "Group G" },
                     { 8, 1, "Group H" },
-                    { 9, null, "Null" }
+                    { 9, 1, "Null" }
                 });
 
             migrationBuilder.InsertData(
@@ -312,123 +320,6 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     { 31, "TOT", 1, 8, "https://kassiesa.net/uefa/clubs/images/Tottenham-Hotspur.png", "Tottenham Hotspur" },
                     { 32, "RMD", 1, 8, "https://kassiesa.net/uefa/clubs/images/Real-Madrid.png", "R. Madrid" }
                 });
-
-            //migrationBuilder.InsertData(
-            //    table: "Match",
-            //    columns: new[] { "Id", "CompetitionId", "GroupId", "GuestTeamId", "HomeTeamId", "PlayedAt", "RoundId", "Score1", "Score1ET", "Score1P", "Score2", "Score2ET", "Score2P", "Winner" },
-            //    values: new object[,]
-            //    {
-            //        { 1, 1, 1, 2, 1, new DateTime(2017, 9, 12, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 2 },
-            //        { 67, 1, 6, 23, 24, new DateTime(2017, 11, 1, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 4, null, null, 23 },
-            //        { 65, 1, 6, 24, 23, new DateTime(2017, 10, 17, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 1, null, null, 23 },
-            //        { 63, 1, 6, 21, 24, new DateTime(2017, 9, 26, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 1, null, null, 24 },
-            //        { 62, 1, 6, 24, 22, new DateTime(2017, 9, 13, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 1, null, null, 22 },
-            //        { 72, 1, 6, 23, 22, new DateTime(2017, 12, 6, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 1, null, null, 22 },
-            //        { 69, 1, 6, 21, 23, new DateTime(2017, 11, 21, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 0, null, null, 23 },
-            //        { 64, 1, 6, 22, 23, new DateTime(2017, 9, 26, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 0, null, null, 23 },
-            //        { 61, 1, 6, 23, 21, new DateTime(2017, 9, 13, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 4, null, null, 23 },
-            //        { 68, 1, 6, 21, 22, new DateTime(2017, 11, 1, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 1, null, null, 22 },
-            //        { 70, 1, 6, 22, 24, new DateTime(2017, 11, 21, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 24 },
-            //        { 66, 1, 6, 22, 21, new DateTime(2017, 10, 17, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 22 },
-            //        { 58, 1, 5, 19, 20, new DateTime(2017, 11, 21, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 3, null, null, 0 },
-            //        { 55, 1, 5, 17, 20, new DateTime(2017, 11, 1, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 1, null, null, 20 },
-            //        { 53, 1, 5, 20, 17, new DateTime(2017, 10, 17, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 5, null, null, 1, null, null, 17 },
-            //        { 51, 1, 5, 18, 20, new DateTime(2017, 9, 26, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 20 },
-            //        { 50, 1, 5, 20, 19, new DateTime(2017, 9, 13, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 2, null, null, 0 },
-            //        { 60, 1, 5, 17, 19, new DateTime(2017, 12, 6, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 7, null, null, 0, null, null, 19 },
-            //        { 56, 1, 5, 18, 19, new DateTime(2017, 11, 1, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 19 },
-            //        { 54, 1, 5, 19, 18, new DateTime(2017, 10, 17, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 7, null, null, 19 },
-            //        { 52, 1, 5, 19, 17, new DateTime(2017, 9, 26, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 59, 1, 5, 20, 18, new DateTime(2017, 12, 6, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 57, 1, 5, 18, 17, new DateTime(2017, 11, 21, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 71, 1, 6, 24, 21, new DateTime(2017, 12, 6, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 1, null, null, 21 },
-            //        { 81, 1, 7, 25, 26, new DateTime(2017, 11, 21, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 92, 1, 8, 32, 31, new DateTime(2017, 11, 1, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 1, null, null, 31 },
-            //        { 90, 1, 8, 31, 32, new DateTime(2017, 10, 17, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 87, 1, 8, 32, 30, new DateTime(2017, 9, 26, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 3, null, null, 32 },
-            //        { 85, 1, 8, 29, 32, new DateTime(2017, 9, 13, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 32 },
-            //        { 96, 1, 8, 29, 31, new DateTime(2017, 12, 6, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 31 },
-            //        { 94, 1, 8, 31, 30, new DateTime(2017, 11, 21, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 31 },
-            //        { 88, 1, 8, 31, 29, new DateTime(2017, 9, 26, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 3, null, null, 31 },
-            //        { 86, 1, 8, 30, 31, new DateTime(2017, 9, 13, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 1, null, null, 31 },
-            //        { 91, 1, 8, 29, 30, new DateTime(2017, 11, 1, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 74, 1, 7, 26, 25, new DateTime(2017, 9, 13, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 3, null, null, 26 },
-            //        { 89, 1, 8, 30, 29, new DateTime(2017, 10, 17, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 82, 1, 7, 27, 28, new DateTime(2017, 11, 21, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 4, null, null, 27 },
-            //        { 79, 1, 7, 28, 26, new DateTime(2017, 11, 1, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 77, 1, 7, 26, 28, new DateTime(2017, 10, 17, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 26 },
-            //        { 76, 1, 7, 25, 28, new DateTime(2017, 9, 26, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 3, null, null, 25 },
-            //        { 73, 1, 7, 28, 27, new DateTime(2017, 9, 13, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 83, 1, 7, 26, 27, new DateTime(2017, 12, 6, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 26 }
-            //    });
-
-            //migrationBuilder.InsertData(
-            //    table: "Match",
-            //    columns: new[] { "Id", "CompetitionId", "GroupId", "GuestTeamId", "HomeTeamId", "PlayedAt", "RoundId", "Score1", "Score1ET", "Score1P", "Score2", "Score2ET", "Score2P", "Winner" },
-            //    values: new object[,]
-            //    {
-            //        { 80, 1, 7, 27, 25, new DateTime(2017, 11, 1, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 1, null, null, 25 },
-            //        { 78, 1, 7, 25, 27, new DateTime(2017, 10, 17, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 2, null, null, 27 },
-            //        { 75, 1, 7, 27, 26, new DateTime(2017, 9, 26, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 0, null, null, 26 },
-            //        { 84, 1, 7, 28, 25, new DateTime(2017, 12, 6, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 5, null, null, 2, null, null, 25 },
-            //        { 49, 1, 5, 17, 18, new DateTime(2017, 9, 13, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 48, 1, 4, 16, 14, new DateTime(2017, 12, 5, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 2, null, null, 16 },
-            //        { 45, 1, 4, 15, 16, new DateTime(2017, 11, 22, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 0, null, null, 0 },
-            //        { 17, 1, 2, 8, 5, new DateTime(2017, 10, 18, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 4, null, null, 8 },
-            //        { 15, 1, 2, 7, 8, new DateTime(2017, 9, 27, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 8 },
-            //        { 14, 1, 2, 8, 6, new DateTime(2017, 9, 12, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 5, null, null, 8 },
-            //        { 21, 1, 2, 7, 5, new DateTime(2017, 11, 22, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 7 },
-            //        { 20, 1, 2, 7, 6, new DateTime(2017, 10, 31, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 7 },
-            //        { 18, 1, 2, 6, 7, new DateTime(2017, 10, 18, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 7 },
-            //        { 13, 1, 2, 5, 7, new DateTime(2017, 9, 12, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 7 },
-            //        { 24, 1, 2, 5, 6, new DateTime(2017, 12, 5, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 1, null, null, 5 },
-            //        { 16, 1, 2, 6, 5, new DateTime(2017, 9, 27, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 3, null, null, 6 },
-            //        { 19, 1, 2, 5, 8, new DateTime(2017, 10, 31, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 5, null, null, 0, null, null, 8 },
-            //        { 11, 1, 1, 4, 1, new DateTime(2017, 12, 5, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 2, null, null, 4 },
-            //        { 7, 1, 1, 2, 4, new DateTime(2017, 10, 31, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 2 },
-            //        { 5, 1, 1, 4, 2, new DateTime(2017, 10, 18, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 2, null, null, 4 },
-            //        { 3, 1, 1, 1, 4, new DateTime(2017, 9, 27, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 5, null, null, 0, null, null, 4 },
-            //        { 2, 1, 1, 4, 3, new DateTime(2017, 9, 12, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 3 },
-            //        { 12, 1, 1, 2, 3, new DateTime(2017, 12, 5, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 1, null, null, 3 },
-            //        { 8, 1, 1, 1, 3, new DateTime(2017, 10, 31, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 0, null, null, 3 },
-            //        { 6, 1, 1, 3, 1, new DateTime(2017, 10, 18, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 1, null, null, 3 },
-            //        { 4, 1, 1, 3, 2, new DateTime(2017, 9, 27, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 4, null, null, 3 },
-            //        { 9, 1, 1, 1, 2, new DateTime(2017, 11, 22, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 0, null, null, 2 },
-            //        { 10, 1, 1, 3, 4, new DateTime(2017, 11, 22, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 0, null, null, 4 },
-            //        { 22, 1, 2, 6, 8, new DateTime(2017, 11, 22, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 7, null, null, 1, null, null, 8 },
-            //        { 23, 1, 2, 8, 7, new DateTime(2017, 12, 5, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 1, null, null, 7 },
-            //        { 25, 1, 3, 9, 10, new DateTime(2017, 9, 12, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 6, null, null, 0, null, null, 10 },
-            //        { 43, 1, 4, 16, 13, new DateTime(2017, 10, 31, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 41, 1, 4, 13, 16, new DateTime(2017, 10, 18, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 1, null, null, 16 },
-            //        { 40, 1, 4, 14, 16, new DateTime(2017, 9, 27, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 0, null, null, 16 },
-            //        { 37, 1, 4, 16, 15, new DateTime(2017, 9, 12, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 15 },
-            //        { 47, 1, 4, 13, 15, new DateTime(2017, 12, 5, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 0, null, null, 15 },
-            //        { 44, 1, 4, 15, 14, new DateTime(2017, 10, 31, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 0, null, null, 0 },
-            //        { 42, 1, 4, 14, 15, new DateTime(2017, 10, 18, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 1, null, null, 15 },
-            //        { 39, 1, 4, 15, 13, new DateTime(2017, 9, 27, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 1, null, null, 15 },
-            //        { 46, 1, 4, 14, 13, new DateTime(2017, 11, 22, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 1, null, null, 13 },
-            //        { 38, 1, 4, 13, 14, new DateTime(2017, 9, 12, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 3, null, null, 13 },
-            //        { 36, 1, 3, 9, 12, new DateTime(2017, 12, 5, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 0, null, null, 12 }
-            //    });
-
-            //migrationBuilder.InsertData(
-            //    table: "Match",
-            //    columns: new[] { "Id", "CompetitionId", "GroupId", "GuestTeamId", "HomeTeamId", "PlayedAt", "RoundId", "Score1", "Score1ET", "Score1P", "Score2", "Score2ET", "Score2P", "Winner" },
-            //    values: new object[,]
-            //    {
-            //        { 34, 1, 3, 12, 11, new DateTime(2017, 11, 22, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 2, null, null, 0, null, null, 11 },
-            //        { 32, 1, 3, 10, 12, new DateTime(2017, 10, 31, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 0, null, null, 12 },
-            //        { 30, 1, 3, 12, 10, new DateTime(2017, 10, 18, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 3, null, null, 0 },
-            //        { 27, 1, 3, 12, 9, new DateTime(2017, 9, 27, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 12 },
-            //        { 26, 1, 3, 11, 12, new DateTime(2017, 9, 12, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 0, null, null, 0 },
-            //        { 35, 1, 3, 11, 10, new DateTime(2017, 12, 5, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 31, 1, 3, 9, 11, new DateTime(2017, 10, 31, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 1, null, null, 0 },
-            //        { 29, 1, 3, 11, 9, new DateTime(2017, 10, 18, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 0, null, null, 0 },
-            //        { 28, 1, 3, 10, 11, new DateTime(2017, 9, 27, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 1, null, null, 2, null, null, 10 },
-            //        { 33, 1, 3, 10, 9, new DateTime(2017, 11, 22, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 4, null, null, 10 },
-            //        { 93, 1, 8, 32, 29, new DateTime(2017, 11, 21, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 0, null, null, 6, null, null, 32 },
-            //        { 95, 1, 8, 30, 32, new DateTime(2017, 12, 6, 20, 45, 0, 0, DateTimeKind.Unspecified), 1, 3, null, null, 2, null, null, 32 }
-            //    });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Competition_LeagueId",
@@ -489,6 +380,11 @@ namespace FootballLeaguesSimulation.Data.Migrations
                 name: "IX_TeamStanding_CompetitionId",
                 table: "TeamStanding",
                 column: "CompetitionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamStanding_RoundId",
+                table: "TeamStanding",
+                column: "RoundId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeamStanding_SeasonId",

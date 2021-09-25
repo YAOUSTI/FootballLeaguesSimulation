@@ -35,7 +35,7 @@ namespace FootballLeaguesSimulation.Models
         public Group Group { get; set; }
 
         //A match belongs to a round
-        public int? RoundId { get; set; }
+        public int RoundId { get; set; }
         public Round Round { get; set; }
     }
 }

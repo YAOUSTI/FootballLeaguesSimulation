@@ -205,6 +205,7 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     GoalsDifference = table.Column<int>(type: "int", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false),
                     Leg = table.Column<int>(type: "int", nullable: false),
+                    Qualification = table.Column<bool>(type: "bit", nullable: false),
                     TeamId = table.Column<int>(type: "int", nullable: false),
                     SeasonId = table.Column<int>(type: "int", nullable: false),
                     CompetitionId = table.Column<int>(type: "int", nullable: false),

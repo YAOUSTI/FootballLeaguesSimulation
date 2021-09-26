@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballLeaguesSimulation.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210925153504_initialsetup")]
+    [Migration("20210926152234_initialsetup")]
     partial class initialsetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -664,6 +664,9 @@ namespace FootballLeaguesSimulation.Data.Migrations
 
                     b.Property<int>("Points")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Qualification")
+                        .HasColumnType("bit");
 
                     b.Property<int>("RoundId")
                         .HasColumnType("int");

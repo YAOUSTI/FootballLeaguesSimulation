@@ -663,6 +663,9 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Qualification")
+                        .HasColumnType("bit");
+
                     b.Property<int>("RoundId")
                         .HasColumnType("int");
 

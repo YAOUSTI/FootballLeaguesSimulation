@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using FootballLeaguesSimulation.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using FootballLeaguesSimulation.Models;
-using System.IO;
 using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
 
 namespace FootballLeaguesSimulation.Data
 {
@@ -27,8 +25,9 @@ namespace FootballLeaguesSimulation.Data
         {
             base.OnModelCreating(builder);
             builder.Entity<League>().HasData(
-                    new League { 
-                        Id = 1, 
+                    new League
+                    {
+                        Id = 1,
                         Name = "EUFA",
                         Logo = "https://w7.pngwing.com/pngs/145/829/png-transparent-uefa-champions-league-uefa-europa-league-uefa-super-cup-uefa-euro-2016-uefa-euro-2020-croatia-football-federation-blue-emblem-text-thumbnail.png",
                     }
@@ -37,10 +36,11 @@ namespace FootballLeaguesSimulation.Data
                     new League { Id = 1, Name = "2017/2018" }
                 );
             builder.Entity<Competition>().HasData(
-                    new Competition { 
-                        Id = 1, 
-                        Name = "UEFA CHAMPIONS LEAGUE", 
-                        Logo= "https://e7.pngegg.com/pngimages/115/195/png-clipart-graphics-uefa-europa-league-logo-football-football-uefa-europa-league-logo.png",
+                    new Competition
+                    {
+                        Id = 1,
+                        Name = "UEFA CHAMPIONS LEAGUE",
+                        Logo = "https://e7.pngegg.com/pngimages/115/195/png-clipart-graphics-uefa-europa-league-logo-football-football-uefa-europa-league-logo.png",
                         SeasonId = 1,
                         LeagueId = 1
                     }
@@ -94,13 +94,16 @@ namespace FootballLeaguesSimulation.Data
             //{
             //    string json = r.ReadToEnd();
             //    var items = JObject.Parse(json);
+            //    //int mp, wins, loses, draws, gf, ga, gd, points, leg, team, season, competition, round;
             //    foreach (var match in items["matchs"])
             //    {
+
             //        var w = 0;
-            //        if((int)match["score_1"] > (int)match["score_2"]){
+            //        if ((int)match["score_1"] > (int)match["score_2"])
+            //        {
             //            w = (int)match["team_home"]["id"];
             //        }
-            //        else if((int)match["score_1"] < (int)match["score_2"])
+            //        else if ((int)match["score_1"] < (int)match["score_2"])
             //        {
             //            w = (int)match["team_away"]["id"];
             //        }
@@ -108,29 +111,45 @@ namespace FootballLeaguesSimulation.Data
             //        {
             //            w = 0;
             //        }
+            //        //builder.Entity<TeamStanding>().HasData(
+            //        //    new TeamStanding
+            //        //    {
+            //        //        MatchPlayed =,
+            //        //        Wins =,
+            //        //        Loses =,
+            //        //        Draws =,
+            //        //        GoalsFor =,
+            //        //        GoalsAgaints =,
+            //        //        GoalsDifference =,
+            //        //        Points =,
+            //        //        Leg =,
+            //        //        TeamId =,
+            //        //        SeasonId =,
+            //        //        CompetitionId =,
+            //        //        RoundId =
+            //        //    });
 
-            //        builder.Entity<Match>().HasData(
-            //            new Match
-            //            {
-            //                Id = k++,
-            //                HomeTeamId = ((int)match["team_home"]["id"]),
-            //                GuestTeamId = ((int)match["team_away"]["id"]),
-            //                Score1 = ((int)match["score_1"]),
-            //                Score2 = ((int)match["score_2"]),
-            //                Score1ET = ((int?)match["score_extra_1"]),
-            //                Score2ET = ((int?)match["score_extra_2"]),
-            //                Score1P = ((int?)match["penalties_1"]),
-            //                Score2P = ((int?)match["penalties_2"]),
-            //                CompetitionId = 1,
-            //                GroupId = ((int)match["team_home"]["group_id"]),
-            //                RoundId = 1,
-            //                PlayedAt = ((DateTime)match["played_at"]),
-            //                Winner = w,
-            //            }
-            //        );
+            //        //builder.Entity<Match>().HasData(
+            //        //    new Match
+            //        //    {
+            //        //        Id = k++,
+            //        //        HomeTeamId = ((int)match["team_home"]["id"]),
+            //        //        GuestTeamId = ((int)match["team_away"]["id"]),
+            //        //        Score1 = ((int)match["score_1"]),
+            //        //        Score2 = ((int)match["score_2"]),
+            //        //        Score1ET = ((int?)match["score_extra_1"]),
+            //        //        Score2ET = ((int?)match["score_extra_2"]),
+            //        //        Score1P = ((int?)match["penalties_1"]),
+            //        //        Score2P = ((int?)match["penalties_2"]),
+            //        //        CompetitionId = 1,
+            //        //        GroupId = ((int)match["team_home"]["group_id"]),
+            //        //        RoundId = 1,
+            //        //        PlayedAt = ((DateTime)match["played_at"]),
+            //        //        Winner = w,
+            //        //    }
+            //        //);
             //    }
             //}
         }
-        
     }
 }

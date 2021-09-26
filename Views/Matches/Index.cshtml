@@ -11,10 +11,9 @@
     <a asp-action="Create">Create New</a>
 </p>
 <div class="justify-content-center text-left">
-
-    @foreach (var playedAt in Model.GroupBy(item => item.PlayedAt.ToString("D")).OrderBy(d=>d.Key))
+    @foreach (var playedAt in Model.GroupBy(item => item.PlayedAt).OrderBy(d=>d.Key))
     {
-        @Html.Encode(playedAt.Key)
+        @Html.Encode(playedAt.Key.ToString("D")) 
         @foreach (var item in playedAt)
         {
             <div class="container-fluid small">

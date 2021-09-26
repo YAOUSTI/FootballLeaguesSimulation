@@ -72,6 +72,10 @@ namespace FootballLeaguesSimulation.Controllers
             var standingDetails2 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.GuestTeamId);
 
             Season season = new Season();
+            Group group = new Group();
+            Round round = new Round();
+            group = _context.Group.FirstOrDefault(s => s.Id == match.GroupId);
+            round = _context.Round.FirstOrDefault(s => s.Id == match.RoundId);
 
             if (standingDetails1 == null)
             {
@@ -91,36 +95,52 @@ namespace FootballLeaguesSimulation.Controllers
                 var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
                 season = _context.Season.FirstOrDefault(s => s.Name == seasonName);
 
-                standingDetails2.TeamId = match.HomeTeamId;
+                standingDetails2.TeamId = match.GuestTeamId;
                 standingDetails2.SeasonId = season.Id;
                 standingDetails2.CompetitionId = match.CompetitionId;
                 standingDetails2.RoundId = match.RoundId;
             }
 
-            if (match.GroupId != 9 && match.RoundId == 1)
+            TeamStandingsController teamStandings = new TeamStandingsController(_context);
+            if (group.Name != "Null" && round.Name == "Groups")
             {
-                if (standingDetails2 != null && standingDetails2 != null)
+                if (standingDetails1.MatchPlayed == 6 || standingDetails2.MatchPlayed == 6)
                 {
-                    if (standingDetails1.MatchPlayed == 6 || standingDetails2.MatchPlayed == 6)
-                    {
-                        goto SkipToEnd;
-                    }
+                    ViewBag.msg = "Attention! The match you are trying to create has already been played or a team has played full group matches";
+                    goto SkipToEnd;
                 }
-                TeamStandingsController teamStandings = new TeamStandingsController(_context);
-                teamStandings.GroupStanding(
-                    standingDetails1,
-                    standingDetails2,
-                    match.PlayedAt,
-                    match.HomeTeamId,
-                    match.GuestTeamId,
-                    match.Score1,
-                    match.Score2,
-                    match.CompetitionId,
-                    match.RoundId);
+                else
+                {
+                    teamStandings.GroupStanding(
+                        standingDetails1,
+                        standingDetails2,
+                        match.PlayedAt,
+                        match.HomeTeamId,
+                        match.GuestTeamId,
+                        match.Score1,
+                        match.Score2,
+                        match.CompetitionId,
+                        match.RoundId);
+                }
                 if (match.Score1 > match.Score2) match.Winner = match.HomeTeamId;
                 if (match.Score1 < match.Score2) match.Winner = match.GuestTeamId;
-            }
 
+            }
+            //if(group.Name == "Null" && match.RoundId != 1)
+            //{
+            //    if (standingDetails2 != null && standingDetails2 != null)
+            //    {
+            //        if (standingDetails1.Leg == 2 && standingDetails2.Leg == 2)
+            //        {
+            //            ViewBag.msg = "Attention! The match you are trying to create has already been played";
+            //            goto SkipToEnd;
+            //        }
+            //        if (standingDetails1.Leg == 0 && standingDetails2.Leg == 0)
+            //        {
+
+            //        }
+            //    }
+            //}
 
             if (ModelState.IsValid)
             {
@@ -134,7 +154,6 @@ namespace FootballLeaguesSimulation.Controllers
             ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Name", match.GuestTeamId);
             ViewData["HomeTeamId"] = new SelectList(_context.Team, "Id", "Name", match.HomeTeamId);
             ViewData["RoundId"] = new SelectList(_context.Round, "Id", "Name", match.RoundId);
-            ViewBag.msg = "Attention! The match you are trying to create has already been played or a team has played full group matches";
 
             return View(match);
         }

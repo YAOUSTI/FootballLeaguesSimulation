@@ -14,16 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Logo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndAt)
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Season)
@@ -38,22 +32,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                <img style="height:40px; width:40px" src="@Url.Content(item.Logo)" alt="@item.Name" />
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Logo)
+                @Html.DisplayFor(modelItem => item.Season.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StartAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Season.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.League.Id)
+                @Html.DisplayFor(modelItem => item.League.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

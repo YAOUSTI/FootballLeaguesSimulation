@@ -1,8 +1,11 @@
 ﻿@model FootballLeaguesSimulation.Models.Competition
 
+
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_CompetitionNavbar.cshtml";
+    var details = Model.Groups.ToList();
 }
 
 <h1>Details</h1>
@@ -10,44 +13,45 @@
 <div>
     <h4>Competition</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Logo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Logo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StartAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StartAt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndAt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Season)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Season.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.League)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.League.Id)
-        </dd>
-    </dl>
+    @foreach (var group in Model.Groups)
+        if (group.Name != "Null")
+        {
+            {
+                <table>
+                    <tr class="text-center">
+                        <td></td>
+                        <td>Teams</td>
+                        <td>Match Played</td>
+                        <td>Wins</td>
+                        <td>Loses</td>
+                        <td>Draws</td>
+                        <td>Goals For</td>
+                        <td>Goals Againts</td>
+                        <td>Goals Difference</td>
+                        <td>Points</td>
+                    </tr>
+
+                    @foreach (var team in group.Teams)
+                    {
+                        @foreach (var standing in team.TeamStandings.OrderBy(c => c.Points))
+                        {
+                            <tr class="text-center">
+                                <td></td>
+                                <td>@standing.Team.Name</td>
+                                <td>@standing.MatchPlayed</td>
+                                <td>@standing.Wins</td>
+                                <td>@standing.Loses</td>
+                                <td>@standing.Draws</td>
+                                <td>@standing.GoalsFor</td>
+                                <td>@standing.GoalsAgaints</td>
+                                <td>@standing.GoalsDifference</td>
+                                <td>@standing.Points</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            }
+        }
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |

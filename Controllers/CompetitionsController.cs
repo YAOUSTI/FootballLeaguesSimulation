@@ -37,6 +37,8 @@ namespace FootballLeaguesSimulation.Controllers
             var competition = await _context.Competition
                 .Include(c => c.League)
                 .Include(c => c.Season)
+                .Include(c => c.Rounds)
+                .Include(c => c.Groups).ThenInclude(c => c.Teams).ThenInclude(c => c.TeamStandings.OrderByDescending(c => c.Points))
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (competition == null)
             {

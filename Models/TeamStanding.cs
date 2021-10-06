@@ -19,7 +19,6 @@ namespace FootballLeaguesSimulation.Models
         public int GoalsAgaints { get; set; }
         public int GoalsDifference { get; set; }
         public int Points { get; set; }
-        public int Leg { get; set; }
         public bool Qualification { get; set; }
 
         //Standings belongs to a team

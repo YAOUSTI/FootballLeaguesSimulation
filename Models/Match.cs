@@ -19,8 +19,9 @@ namespace FootballLeaguesSimulation.Models
         public int? Score1P { get; set; }
         public int? Score2P { get; set; }
         public int Winner { get; set; }
+        public int Leg { get; set; }
 
-        
+
         //A match belongs to two teams
         public int HomeTeamId { get; set; }
         public virtual Team HomeTeam { get; set; }

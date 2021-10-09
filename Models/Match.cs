@@ -20,6 +20,8 @@ namespace FootballLeaguesSimulation.Models
         public int? Score2P { get; set; }
         public int Winner { get; set; }
         public int Leg { get; set; }
+        public int Aggregation1 { get; set; }
+        public int Aggregation2 { get; set; }
 
 
         //A match belongs to two teams

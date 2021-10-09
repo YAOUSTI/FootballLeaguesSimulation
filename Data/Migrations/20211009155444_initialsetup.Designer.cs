@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballLeaguesSimulation.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210926152234_initialsetup")]
+    [Migration("20211009155444_initialsetup")]
     partial class initialsetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -176,6 +176,12 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Aggregation1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Aggregation2")
+                        .HasColumnType("int");
+
                     b.Property<int>("CompetitionId")
                         .HasColumnType("int");
 
@@ -186,6 +192,9 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("HomeTeamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Leg")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("PlayedAt")
@@ -653,7 +662,7 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     b.Property<int>("GoalsFor")
                         .HasColumnType("int");
 
-                    b.Property<int>("Leg")
+                    b.Property<int?>("GroupId")
                         .HasColumnType("int");
 
                     b.Property<int>("Loses")
@@ -665,10 +674,10 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Qualification")
-                        .HasColumnType("bit");
+                    b.Property<int>("Rank")
+                        .HasColumnType("int");
 
-                    b.Property<int>("RoundId")
+                    b.Property<int?>("RoundId")
                         .HasColumnType("int");
 
                     b.Property<int>("SeasonId")
@@ -683,6 +692,8 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CompetitionId");
+
+                    b.HasIndex("GroupId");
 
                     b.HasIndex("RoundId");
 
@@ -996,11 +1007,13 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FootballLeaguesSimulation.Models.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId");
+
                     b.HasOne("FootballLeaguesSimulation.Models.Round", "Round")
                         .WithMany("TeamStandings")
-                        .HasForeignKey("RoundId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoundId");
 
                     b.HasOne("FootballLeaguesSimulation.Models.Season", "Season")
                         .WithMany("TeamStandings")
@@ -1015,6 +1028,8 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Competition");
+
+                    b.Navigation("Group");
 
                     b.Navigation("Round");
 

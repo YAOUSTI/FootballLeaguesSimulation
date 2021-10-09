@@ -149,6 +149,9 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     Score1P = table.Column<int>(type: "int", nullable: true),
                     Score2P = table.Column<int>(type: "int", nullable: true),
                     Winner = table.Column<int>(type: "int", nullable: false),
+                    Leg = table.Column<int>(type: "int", nullable: false),
+                    Aggregation1 = table.Column<int>(type: "int", nullable: false),
+                    Aggregation2 = table.Column<int>(type: "int", nullable: false),
                     HomeTeamId = table.Column<int>(type: "int", nullable: false),
                     GuestTeamId = table.Column<int>(type: "int", nullable: false),
                     CompetitionId = table.Column<int>(type: "int", nullable: false),
@@ -204,12 +207,12 @@ namespace FootballLeaguesSimulation.Data.Migrations
                     GoalsAgaints = table.Column<int>(type: "int", nullable: false),
                     GoalsDifference = table.Column<int>(type: "int", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false),
-                    Leg = table.Column<int>(type: "int", nullable: false),
-                    Qualification = table.Column<bool>(type: "bit", nullable: false),
+                    Rank = table.Column<int>(type: "int", nullable: false),
                     TeamId = table.Column<int>(type: "int", nullable: false),
                     SeasonId = table.Column<int>(type: "int", nullable: false),
                     CompetitionId = table.Column<int>(type: "int", nullable: false),
-                    RoundId = table.Column<int>(type: "int", nullable: false)
+                    RoundId = table.Column<int>(type: "int", nullable: true),
+                    GroupId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -221,11 +224,17 @@ namespace FootballLeaguesSimulation.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_TeamStanding_Group_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Group",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_TeamStanding_Round_RoundId",
                         column: x => x.RoundId,
                         principalTable: "Round",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_TeamStanding_Season_SeasonId",
                         column: x => x.SeasonId,
@@ -381,6 +390,11 @@ namespace FootballLeaguesSimulation.Data.Migrations
                 name: "IX_TeamStanding_CompetitionId",
                 table: "TeamStanding",
                 column: "CompetitionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamStanding_GroupId",
+                table: "TeamStanding",
+                column: "GroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeamStanding_RoundId",

@@ -120,27 +120,11 @@ namespace FootballLeaguesSimulation.Controllers
                         match.Score1,
                         match.Score2,
                         match.CompetitionId,
+                        (int)match.GroupId,
                         match.RoundId);
                 }
-                if (match.Score1 > match.Score2) match.Winner = match.HomeTeamId;
-                if (match.Score1 < match.Score2) match.Winner = match.GuestTeamId;
-
+                match.Winner = teamStandings.Winner;
             }
-            //if(group.Name == "Null" && match.RoundId != 1)
-            //{
-            //    if (standingDetails2 != null && standingDetails2 != null)
-            //    {
-            //        if (standingDetails1.Leg == 2 && standingDetails2.Leg == 2)
-            //        {
-            //            ViewBag.msg = "Attention! The match you are trying to create has already been played";
-            //            goto SkipToEnd;
-            //        }
-            //        if (standingDetails1.Leg == 0 && standingDetails2.Leg == 0)
-            //        {
-
-            //        }
-            //    }
-            //}
 
             if (ModelState.IsValid)
             {

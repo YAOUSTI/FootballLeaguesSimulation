@@ -65,7 +65,7 @@ namespace FootballLeaguesSimulation.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PlayedAt,Score1,Score2,Score1ET,Score2ET,Score1P,Score2P,Winner,HomeTeamId,GuestTeamId,CompetitionId,GroupId,RoundId")] Match match)
+        public async Task<IActionResult> Create([Bind("Id,PlayedAt,Score1,Score2,Score1ET,Score2ET,Score1P,Score2P,Winner,HomeTeamId,GuestTeamId,CompetitionId,GroupId,RoundId,Leg")] Match match)
         {
             //If this was a group stage match this process will start storing all of match details and the standing of each team 
             var standingDetails1 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.HomeTeamId);
@@ -168,7 +168,7 @@ namespace FootballLeaguesSimulation.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PlayedAt,Score1,Score2,Score1ET,Score2ET,Score1P,Score2P,Winner,HomeTeamId,GuestTeamId,CompetitionId,GroupId,RoundId")] Match match)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PlayedAt,Score1,Score2,Score1ET,Score2ET,Score1P,Score2P,Winner,HomeTeamId,GuestTeamId,CompetitionId,GroupId,RoundId,Leg")] Match match)
         {
             if (id != match.Id)
             {

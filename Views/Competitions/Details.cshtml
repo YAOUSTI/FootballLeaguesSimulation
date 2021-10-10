@@ -19,7 +19,7 @@
             {
                 <table>
                     <tr class="text-center">
-                        <td></td>
+                        <td>Rank</td>
                         <td>Teams</td>
                         <td>Match Played</td>
                         <td>Wins</td>
@@ -33,10 +33,10 @@
 
                     @foreach (var team in group.Teams)
                     {
-                        @foreach (var standing in team.TeamStandings.OrderBy(c => c.Points))
+                        @foreach (var standing in team.TeamStandings.OrderBy(c => c.Rank))
                         {
                             <tr class="text-center">
-                                <td></td>
+                                <td>@standing.Rank</td>
                                 <td>@standing.Team.Name</td>
                                 <td>@standing.MatchPlayed</td>
                                 <td>@standing.Wins</td>

@@ -16,7 +16,8 @@
     <hr />
     <div class="container-fluid small">
         <div class="row justify-content-center w-100">@Html.DisplayFor(modelItem => modelItem.Group.Name)</div>
-        <div class="row justify-content-center w-100">@Html.DisplayFor(modelItem => modelItem.Round.Name)</div>
+        <div class="row justify-content-center w-100" id="RoundName">@Html.DisplayFor(modelItem => modelItem.Round.Name)</div>
+        <div class="row justify-content-center w-100" id="LegName">Leg @Html.DisplayFor(modelItem => modelItem.Leg)</div>
         <div class="row">
             <div class="col text-right">
                 @Html.DisplayFor(modelItem => modelItem.HomeTeam.Name)
@@ -61,6 +62,9 @@
             if (et.innerText == "(" || p.innerText == "(") {
                 extraTime.remove();
                 penalties.remove();
+            }
+            if (document.getElementById("RoundName").innerText == "Finale" || document.getElementById("RoundName").innerText == "Groups") {
+                document.getElementById("LegName").style.display = "none";
             }
         });
     </script>

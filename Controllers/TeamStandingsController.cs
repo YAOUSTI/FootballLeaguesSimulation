@@ -17,8 +17,11 @@ namespace FootballLeaguesSimulation.Controllers
         {
             _context = context;
         }
-        public int Winner { get; set; }
-        public void GroupStanding(TeamStanding standingDetails1, TeamStanding standingDetails2, DateTime playedAt, int homeTeam, int guestTeam, int score1, int score2, int competition, int group, int round)
+        public int Winner = 0;
+        public int Agg1 { get; set; }
+        public int Agg2 { get; set; }
+        
+        public int GroupStanding(TeamStanding standingDetails1, TeamStanding standingDetails2, DateTime playedAt, int homeTeam, int guestTeam, int score1, int score2, int competition, int group, int round)
         {
             if (score1 == score2)
             {
@@ -80,8 +83,8 @@ namespace FootballLeaguesSimulation.Controllers
                         tmpGroupStandingsList[i] = tmpGroupStandingsList[j];
                         tmpGroupStandingsList[j] = tmpStanding;
                     }
-                    else if (tmpGroupStandingsList[i].Points == tmpGroupStandingsList[j].Points 
-                        && tmpGroupStandingsList[i].GoalsDifference == tmpGroupStandingsList[j].GoalsDifference 
+                    else if (tmpGroupStandingsList[i].Points == tmpGroupStandingsList[j].Points
+                        && tmpGroupStandingsList[i].GoalsDifference == tmpGroupStandingsList[j].GoalsDifference
                         && tmpGroupStandingsList[i].GoalsFor < tmpGroupStandingsList[j].GoalsFor)
                     {
                         tmpGroupStandingsList[i].Rank = j + 1;
@@ -96,36 +99,96 @@ namespace FootballLeaguesSimulation.Controllers
             {
                 _context.TeamStanding.Update(standing);
             }
+            return Winner;
         }
-        //public void EleminationStanding(TeamStanding standingDetails1, TeamStanding standingDetails2, DateTime playedat, int hometeam, int guestteam, int score1, int score2, int extratime1, int extratime2, int penalties1, int penalties2, int agg1, int agg2, int competition, int round, int leg)
-        //{
-        //    if (leg == 1)
-        //    {
-        //        if (score1 > score2) Winner = hometeam;
-        //        else Winner = guestteam;
-        //    }
-        //    if (leg == 2 && agg1 == agg2)
-        //    {
-        //        var matchLeg1 = _context.Match.FirstOrDefault(s => s.HomeTeamId == hometeam && s.GuestTeamId == guestteam && s.Leg == 1 && s.RoundId == round && s.CompetitionId == competition);
-        //        if (matchLeg1.Score2 > score2) Winner = guestteam;
-        //        if (matchLeg1.Score2 < score2) Winner = hometeam;
-        //        if (matchLeg1.Score2 == score2)
-        //        {
-        //            if (extratime1 == 0 && extratime2 == 0)
-        //            {
-        //                if (penalties1 > penalties2) Winner = hometeam;
-        //                else Winner = guestteam;
-        //            }
-        //            else if (extratime1 != 0 && extratime2 != 0 && extratime1 == extratime2) Winner = guestteam;
-        //            else if (extratime1 > extratime2) Winner = hometeam;
-        //            else Winner = guestteam;
-        //        }
-        //    }
-        //    else if (leg == 2 && agg1 > agg2) Winner = hometeam;
-        //    else Winner = guestteam;
+        public int EleminationStandingFirstLeg(int hometeam, int guestteam, int score1, int score2)
+        {
+            if (score1 > score2) Winner = hometeam;
+            else if (score1 < score2) Winner = guestteam;
+            Agg1 = score1;
+            Agg2 = score2;
 
-        //    _context.TeamStanding.Update(standingDetails1);
-        //    _context.TeamStanding.Update(standingDetails2);
-        //}
+            return Winner;
+        }
+        public int EleminationStandingSecondLeg(int hometeam, int guestteam, int score1, int score2, int competition, int round)
+        {
+            var matchLeg1 = _context.Match.FirstOrDefault(s => s.HomeTeamId == guestteam && s.GuestTeamId == hometeam && s.Leg == 1 && s.RoundId == round && s.CompetitionId == competition);
+            Agg1 = matchLeg1.Aggregation1 + score1;
+            Agg2 = matchLeg1.Aggregation2 + score2;
+            if (Agg1 == Agg2)
+            {
+                if (matchLeg1.Score2 > score2) Winner = hometeam;
+                if (matchLeg1.Score2 < score2) Winner = guestteam;
+            }
+            else if (Agg1 > Agg2)
+            {
+                Winner = hometeam;
+            }
+            else
+            {
+                Winner = guestteam;
+            }
+
+            return Winner;
+        }
+
+        public int EleminationStandingSecondLegEquality(int hometeam, int guestteam, int extratime1, int extratime2)
+        {
+            if (extratime1 != 0 && extratime2 != 0 && extratime1 == extratime2)
+            {
+                Winner = guestteam;
+                Agg1 += extratime1;
+                Agg2 += extratime2;
+            }
+            else if (extratime1 > extratime2)
+            {
+                Winner = hometeam;
+                Agg1 += extratime1;
+                Agg2 += extratime2;
+            }
+            else if (extratime1 < extratime2)
+            {
+                Winner = guestteam;
+                Agg1 += extratime1;
+                Agg2 += extratime2;
+            }
+            return Winner;
+        }
+        public int EleminationStandingSecondLegEqualityExtraTimes(int hometeam, int guestteam, int penalties1, int penalties2)
+        {
+            if (penalties1 > penalties2) Winner = hometeam;
+            else Winner = guestteam;
+
+            return Winner;
+        }
+
+
+        public int EleminationFinal(int hometeam, int guestteam, int score1, int score2)
+        {
+            if (score1 > score2) Winner = hometeam;
+            else if (score1 < score2) Winner = guestteam;
+
+            return Winner;
+        }
+
+        public int EleminationFinalEquality(int hometeam, int guestteam, int extratime1, int extratime2)
+        {
+            if (extratime1 > extratime2)
+            {
+                Winner = hometeam;
+            }
+            else if (extratime1 < extratime2)
+            {
+                Winner = guestteam;
+            }
+            return Winner;
+        }
+        public int EleminationFinalEqualityExtraTimes(int hometeam, int guestteam, int penalties1, int penalties2)
+        {
+            if (penalties1 > penalties2) Winner = hometeam;
+            else Winner = guestteam;
+
+            return Winner;
+        }
     }
 }

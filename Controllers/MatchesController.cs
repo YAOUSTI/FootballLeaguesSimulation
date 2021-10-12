@@ -67,7 +67,6 @@ namespace FootballLeaguesSimulation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PlayedAt,Score1,Score2,Score1ET,Score2ET,Score1P,Score2P,Winner,HomeTeamId,GuestTeamId,CompetitionId,GroupId,RoundId,Leg")] Match match)
         {
-            //If this was a group stage match this process will start storing all of match details and the standing of each team 
             var standingDetails1 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.HomeTeamId);
             var standingDetails2 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.GuestTeamId);
 
@@ -76,6 +75,17 @@ namespace FootballLeaguesSimulation.Controllers
             Round round = new Round();
             group = _context.Group.FirstOrDefault(s => s.Id == match.GroupId);
             round = _context.Round.FirstOrDefault(s => s.Id == match.RoundId);
+            if (group.Id != 9 && round.Id == 1)
+            {
+                //If this was a group stage match this process will start storing all of match details and the standing of each team 
+                standingDetails1 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.HomeTeamId && s.RoundId == 1);
+                standingDetails2 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.GuestTeamId && s.RoundId == 1);
+            }
+            else
+            {
+                standingDetails1 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.HomeTeamId && s.RoundId != 1);
+                standingDetails2 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.GuestTeamId && s.RoundId != 1);
+            }
 
             if (standingDetails1 == null)
             {
@@ -111,7 +121,7 @@ namespace FootballLeaguesSimulation.Controllers
                 }
                 else
                 {
-                    teamStandings.GroupStanding(
+                    match.Winner = teamStandings.GroupStanding(
                         standingDetails1,
                         standingDetails2,
                         match.PlayedAt,
@@ -123,16 +133,58 @@ namespace FootballLeaguesSimulation.Controllers
                         (int)match.GroupId,
                         match.RoundId);
                 }
-                match.Winner = teamStandings.Winner;
             }
+            if (group.Name == "Null" && round.Name != "Final")
+            {
+                if (match.Leg == 1)
+                {
+                    match.Winner = teamStandings.EleminationStandingFirstLeg(match.HomeTeamId, match.GuestTeamId, match.Score1, match.Score2);
+                    match.Aggregation1 = teamStandings.Agg1;
+                    match.Aggregation2 = teamStandings.Agg2;
+                }
+                if (match.Leg == 2)
+                {
+                    match.Winner = teamStandings.EleminationStandingSecondLeg(
+                      match.HomeTeamId,
+                      match.GuestTeamId,
+                      match.Score1,
+                      match.Score2,
+                      match.CompetitionId,
+                      match.RoundId);
+                    match.Aggregation1 = teamStandings.Agg1;
+                    match.Aggregation2 = teamStandings.Agg2;
 
+                    if (match.Winner == 0)
+                    {
+                        match.Winner = teamStandings.EleminationStandingSecondLegEquality(match.HomeTeamId, match.GuestTeamId, (int)match.Score1ET, (int)match.Score2ET);
+                        match.Aggregation1 = teamStandings.Agg1;
+                        match.Aggregation2 = teamStandings.Agg2;
+                        if (match.Winner == 0)
+                        {
+                            match.Winner = teamStandings.EleminationStandingSecondLegEqualityExtraTimes(match.HomeTeamId, match.GuestTeamId, (int)match.Score1P, (int)match.Score2P);
+                        }
+                    }
+                }
+            }
+            if (group.Name == "Null" && round.Name == "Final")
+            {
+                match.Winner = teamStandings.EleminationFinal(match.HomeTeamId, match.GuestTeamId, match.Score1, match.Score2);
+                if (match.Winner == 0)
+                {
+                    match.Winner = teamStandings.EleminationFinalEquality(match.HomeTeamId, match.GuestTeamId, (int)match.Score1ET, (int)match.Score2ET);
+                    if (match.Winner == 0)
+                    {
+                        match.Winner = teamStandings.EleminationFinalEqualityExtraTimes(match.HomeTeamId, match.GuestTeamId, (int)match.Score1P, (int)match.Score2P);
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(match);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            SkipToEnd:
+        SkipToEnd:
             ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Name", match.CompetitionId);
             ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Name", match.GroupId);
             ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Name", match.GuestTeamId);
@@ -175,6 +227,118 @@ namespace FootballLeaguesSimulation.Controllers
                 return NotFound();
             }
 
+
+            var standingDetails1 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.HomeTeamId);
+            var standingDetails2 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.GuestTeamId);
+
+            Season season = new Season();
+            Group group = new Group();
+            Round round = new Round();
+            group = _context.Group.FirstOrDefault(s => s.Id == match.GroupId);
+            round = _context.Round.FirstOrDefault(s => s.Id == match.RoundId);
+            if (group.Id != 9 && round.Id == 1)
+            {
+                //If this was a group stage match this process will start storing all of match details and the standing of each team 
+                standingDetails1 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.HomeTeamId && s.RoundId == 1);
+                standingDetails2 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.GuestTeamId && s.RoundId == 1);
+            }
+            else
+            {
+                standingDetails1 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.HomeTeamId && s.RoundId != 1);
+                standingDetails2 = _context.TeamStanding.FirstOrDefault(s => s.TeamId == match.GuestTeamId && s.RoundId != 1);
+            }
+
+            if (standingDetails1 == null)
+            {
+                standingDetails1 = new TeamStanding();
+                var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
+                season = _context.Season.FirstOrDefault(s => s.Name == seasonName);
+
+                standingDetails1.TeamId = match.HomeTeamId;
+                standingDetails1.SeasonId = season.Id;
+                standingDetails1.CompetitionId = match.CompetitionId;
+                standingDetails1.RoundId = match.RoundId;
+            }
+
+            if (standingDetails2 == null)
+            {
+                standingDetails2 = new TeamStanding();
+                var seasonName = match.PlayedAt.Year.ToString() + "/" + (match.PlayedAt.Year + 1).ToString();
+                season = _context.Season.FirstOrDefault(s => s.Name == seasonName);
+
+                standingDetails2.TeamId = match.GuestTeamId;
+                standingDetails2.SeasonId = season.Id;
+                standingDetails2.CompetitionId = match.CompetitionId;
+                standingDetails2.RoundId = match.RoundId;
+            }
+
+            TeamStandingsController teamStandings = new TeamStandingsController(_context);
+            if (group.Name != "Null" && round.Name == "Groups")
+            {
+                if (standingDetails1.MatchPlayed == 6 || standingDetails2.MatchPlayed == 6)
+                {
+                    ViewBag.msg = "Attention! The match you are trying to create has already been played or a team has played full group matches";
+                    goto SkipToEnd;
+                }
+                else
+                {
+                    match.Winner = teamStandings.GroupStanding(
+                        standingDetails1,
+                        standingDetails2,
+                        match.PlayedAt,
+                        match.HomeTeamId,
+                        match.GuestTeamId,
+                        match.Score1,
+                        match.Score2,
+                        match.CompetitionId,
+                        (int)match.GroupId,
+                        match.RoundId);
+                }
+            }
+            if (group.Name == "Null" && round.Name != "Final")
+            {
+                if (match.Leg == 1)
+                {
+                    match.Winner = teamStandings.EleminationStandingFirstLeg(match.HomeTeamId, match.GuestTeamId, match.Score1, match.Score2);
+                    match.Aggregation1 = teamStandings.Agg1;
+                    match.Aggregation2 = teamStandings.Agg2;
+                }
+                if (match.Leg == 2)
+                {
+                    match.Winner = teamStandings.EleminationStandingSecondLeg(
+                      match.HomeTeamId,
+                      match.GuestTeamId,
+                      match.Score1,
+                      match.Score2,
+                      match.CompetitionId,
+                      match.RoundId);
+                    match.Aggregation1 = teamStandings.Agg1;
+                    match.Aggregation2 = teamStandings.Agg2;
+
+                    if (match.Winner == 0)
+                    {
+                        match.Winner = teamStandings.EleminationStandingSecondLegEquality(match.HomeTeamId, match.GuestTeamId, (int)match.Score1ET, (int)match.Score2ET);
+                        match.Aggregation1 = teamStandings.Agg1;
+                        match.Aggregation2 = teamStandings.Agg2;
+                        if (match.Winner == 0)
+                        {
+                            match.Winner = teamStandings.EleminationStandingSecondLegEqualityExtraTimes(match.HomeTeamId, match.GuestTeamId, (int)match.Score1P, (int)match.Score2P);
+                        }
+                    }
+                }
+            }
+            if (group.Name == "Null" && round.Name == "Final")
+            {
+                match.Winner = teamStandings.EleminationFinal(match.HomeTeamId, match.GuestTeamId, match.Score1, match.Score2);
+                if (match.Winner == 0)
+                {
+                    match.Winner = teamStandings.EleminationFinalEquality(match.HomeTeamId, match.GuestTeamId, (int)match.Score1ET, (int)match.Score2ET);
+                    if (match.Winner == 0)
+                    {
+                        match.Winner = teamStandings.EleminationFinalEqualityExtraTimes(match.HomeTeamId, match.GuestTeamId, (int)match.Score1P, (int)match.Score2P);
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -195,6 +359,7 @@ namespace FootballLeaguesSimulation.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            SkipToEnd:
             ViewData["CompetitionId"] = new SelectList(_context.Competition, "Id", "Name", match.CompetitionId);
             ViewData["GroupId"] = new SelectList(_context.Group, "Id", "Name", match.GroupId);
             ViewData["GuestTeamId"] = new SelectList(_context.Team, "Id", "Name", match.GuestTeamId);

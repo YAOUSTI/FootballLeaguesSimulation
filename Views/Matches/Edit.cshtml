@@ -142,111 +142,109 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function (event) {
-            $('#RoundId > option[value=' + 2 + ']').remove();
-            $('#RoundId > option[value=' + 3 + ']').remove();
-            $('#RoundId > option[value=' + 4 + ']').remove();
-            $('#RoundId > option[value=' + 5 + ']').remove();
-            document.getElementById("Score1ET").style.display = "none";
-            document.getElementById("Score2ET").style.display = "none";;
-            document.getElementById("lbl_ET").style.display = "none";;
-            document.getElementById("Score1P").style.display = "none";;
-            document.getElementById("Score2P").style.display = "none";;
-            document.getElementById("lbl_P").style.display = "none";
-            document.getElementById("Leg").style.display = "none";
-        });
-        var deleted = false;
-        var i = 1;
-        $('#GroupId').change(function () {
+<script type="text/javascript">
+    $(document).ready(function () {
+        var leg = document.createElement("option");
+        leg.value = @Model.Leg;
+        leg.text = "Leg " +@Model.Leg;
+        document.getElementById("Leg").append(leg);
+    });
+    var deleted = false;
+    var i = 1;
+    var leg1 = document.createElement("option");
+    var leg2 = document.createElement("option");
 
-            var val = $(this).val();
-            var groups = document.createElement("option");
-            var round16 = document.createElement("option");
-            var round8 = document.createElement("option");
-            var semiFinal = document.createElement("option");
-            var final = document.createElement("option");
-            var score1ET = document.getElementById("Score1ET");
-            var score2ET = document.getElementById("Score2ET");
-            var lblET = document.getElementById("lbl_ET");
-            var score1P = document.getElementById("Score1P");
-            var score2P = document.getElementById("Score2P");
-            var lblP = document.getElementById("lbl_P");
-            var selectRound = document.getElementById("RoundId");
-            var selectLeg = document.getElementById("Leg");
-            var leg1 = document.createElement("option");
-            var leg2 = document.createElement("option");
+    leg1.value = 1;
+    leg1.text = "Leg 1";
 
-            groups.value = 1;
-            groups.text = "Groups";
-            groups.selected = true;
+    leg2.value = 2;
+    leg2.text = "Leg 2";
+    $('#GroupId').change(function () {
 
-            round16.value = 2;
-            round16.text = "Round of 16";
+        var val = $(this).val();
+        var score1ET = document.getElementById("Score1ET");
+        var score2ET = document.getElementById("Score2ET");
+        var lblET = document.getElementById("lbl_ET");
+        var score1P = document.getElementById("Score1P");
+        var score2P = document.getElementById("Score2P");
+        var lblP = document.getElementById("lbl_P");
+        var selectRound = document.getElementById("RoundId");
+        var selectLeg = document.getElementById("Leg");
+        var groups = document.createElement("option");
+        var round16 = document.createElement("option");
+        var round8 = document.createElement("option");
+        var semiFinal = document.createElement("option");
+        var final = document.createElement("option");
 
-            round8.value = 3;
-            round8.text = "Round of 8";
+        groups.value = 1;
+        groups.text = "Groups";
+        groups.selected = true;
 
-            semiFinal.value = 4;
-            semiFinal.text = "Semi Final";
+        round16.value = 2;
+        round16.text = "Round of 16";
 
-            final.value = 5;
-            final.text = "Final";
+        round8.value = 3;
+        round8.text = "Round of 8";
 
-            leg1.value = 1;
-            leg1.text = "Leg 1";
+        semiFinal.value = 4;
+        semiFinal.text = "Semi Final";
 
-            leg2.value = 2;
-            leg2.text = "Leg 2";
+        final.value = 5;
+        final.text = "Final";
 
-            if (val == 9 && !deleted) {
-                if (i == 1) {
-                    selectRound.add(round16, null);
-                    selectRound.add(round8, null);
-                    selectRound.add(semiFinal, null);
-                    selectRound.add(final, null);
-                    selectLeg.add(leg1, null);
-                    selectLeg.add(leg2, null);
-                }
-                $('#RoundId > option[value=' + groups.value + ']').remove();
-                score1ET.style.display = "table-cell";
-                score2ET.style.display = "table-cell";
-                lblET.style.display = "table-cell";
-                score1P.style.display = "table-cell";
-                score2P.style.display = "table-cell";
-                lblP.style.display = "table-cell";
-                selectLeg.style.display = "block";
-                deleted = true;
-                i++;
+
+        if (val == 9 && !deleted) {
+            if (i == 1) {
+                selectRound.add(round16, null);
+                selectRound.add(round8, null);
+                selectRound.add(semiFinal, null);
+                selectRound.add(final, null);
+                selectLeg.add(leg1, null);
+                selectLeg.add(leg2, null);
             }
-            if (val != 9 && deleted) {
-                $('#RoundId > option[value=' + round16.value + ']').remove();
-                $('#RoundId > option[value=' + round8.value + ']').remove();
-                $('#RoundId > option[value=' + semiFinal.value + ']').remove();
-                $('#RoundId > option[value=' + final.value + ']').remove();
-                $('#Leg > option[value=' + leg1.value + ']').remove();
-                $('#Leg > option[value=' + leg2.value + ']').remove();
-                score1ET.style.display = "none";
-                score2ET.style.display = "none";
-                lblET.style.display = "none";
-                score1P.style.display = "none";
-                score2P.style.display = "none";
-                lblP.style.display = "none";
-                selectLeg.style.display = "none";
-                selectRound.add(groups, null);
-                deleted = false;
-                i = 1;
-            }
-        });
-        $('#RoundId').change(function () {
-            var val = $(this).val();
-            var selectLeg = document.getElementById("Leg");
-            if (val == 5) {
-                selectLeg.style.display = "none";
-            }
-            else {
-                selectLeg.style.display = "block";
-            }
-        });
-    </script>
+            $('#RoundId > option[value=' + groups.value + ']').remove();
+            score1ET.style.display = "table-cell";
+            score2ET.style.display = "table-cell";
+            lblET.style.display = "table-cell";
+            score1P.style.display = "table-cell";
+            score2P.style.display = "table-cell";
+            lblP.style.display = "table-cell";
+            selectLeg.style.display = "block";
+            deleted = true;
+            i++;
+        }
+        if (val != 9 && deleted) {
+            $('#RoundId > option[value=' + round16.value + ']').remove();
+            $('#RoundId > option[value=' + round8.value + ']').remove();
+            $('#RoundId > option[value=' + semiFinal.value + ']').remove();
+            $('#RoundId > option[value=' + final.value + ']').remove();
+            $('#Leg > option[value=' + leg1.value + ']').remove();
+            $('#Leg > option[value=' + leg2.value + ']').remove();
+            score1ET.style.display = "none";
+            score2ET.style.display = "none";
+            lblET.style.display = "none";
+            score1P.style.display = "none";
+            score2P.style.display = "none";
+            lblP.style.display = "none";
+            selectLeg.style.display = "none";
+            selectRound.add(groups, null);
+            deleted = false;
+            i = 1;
+        }
+    });
+    $('#RoundId').change(function () {
+        var val = $(this).val();
+        var selectLeg = document.getElementById("Leg");
+        if (val == 5) {
+            selectLeg.style.display = "none";
+            $('#Leg > option[value=' + leg1.value + ']').remove();
+            $('#Leg > option[value=' + leg2.value + ']').remove();
+        }
+        else {
+            selectLeg.style.display = "block";
+            selectLeg.add(leg1, null);
+            selectLeg.add(leg2, null);
+        }
+    });
+</script>
 }

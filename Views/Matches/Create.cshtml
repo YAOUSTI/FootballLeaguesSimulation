@@ -164,6 +164,14 @@
         });
         var deleted = false;
         var i = 1;
+        var leg1 = document.createElement("option");
+        var leg2 = document.createElement("option");
+
+        leg1.value = 1;
+        leg1.text = "Leg 1";
+
+        leg2.value = 2;
+        leg2.text = "Leg 2";
         $('#GroupId').change(function () {
 
             var val = $(this).val();
@@ -180,8 +188,6 @@
             var round8 = document.createElement("option");
             var semiFinal = document.createElement("option");
             var final = document.createElement("option");
-            var leg1 = document.createElement("option");
-            var leg2 = document.createElement("option");
 
             groups.value = 1;
             groups.text = "Groups";
@@ -199,11 +205,6 @@
             final.value = 5;
             final.text = "Final";
 
-            leg1.value = 1;
-            leg1.text = "Leg 1";
-
-            leg2.value = 2;
-            leg2.text = "Leg 2";
 
             if (val == 9 && !deleted) {
                 if (i == 1) {
@@ -249,9 +250,13 @@
             var selectLeg = document.getElementById("Leg");
             if (val == 5) {
                 selectLeg.style.display = "none";
+                $('#Leg > option[value=' + leg1.value + ']').remove();
+                $('#Leg > option[value=' + leg2.value + ']').remove();
             }
             else {
                 selectLeg.style.display = "block";
+                selectLeg.add(leg1, null);
+                selectLeg.add(leg2, null);
             }
         });
     </script>

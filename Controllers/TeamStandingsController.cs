@@ -101,7 +101,7 @@ namespace FootballLeaguesSimulation.Controllers
             }
             return Winner;
         }
-        public int EleminationStandingFirstLeg(int hometeam, int guestteam, int score1, int score2)
+        public int PlayOffFirstLeg(int hometeam, int guestteam, int score1, int score2)
         {
             if (score1 > score2) Winner = hometeam;
             else if (score1 < score2) Winner = guestteam;
@@ -110,7 +110,7 @@ namespace FootballLeaguesSimulation.Controllers
 
             return Winner;
         }
-        public int EleminationStandingSecondLeg(int hometeam, int guestteam, int score1, int score2, int competition, int round)
+        public int PlayOffSecondLeg(int hometeam, int guestteam, int score1, int score2, int competition, int round)
         {
             var matchLeg1 = _context.Match.FirstOrDefault(s => s.HomeTeamId == guestteam && s.GuestTeamId == hometeam && s.Leg == 1 && s.RoundId == round && s.CompetitionId == competition);
             Agg1 = matchLeg1.Aggregation1 + score1;
@@ -132,7 +132,7 @@ namespace FootballLeaguesSimulation.Controllers
             return Winner;
         }
 
-        public int EleminationStandingSecondLegEquality(int hometeam, int guestteam, int extratime1, int extratime2)
+        public int PlayOffSecondLegEquality(int hometeam, int guestteam, int extratime1, int extratime2)
         {
             if (extratime1 != 0 && extratime2 != 0 && extratime1 == extratime2)
             {
@@ -154,7 +154,7 @@ namespace FootballLeaguesSimulation.Controllers
             }
             return Winner;
         }
-        public int EleminationStandingSecondLegEqualityExtraTimes(int hometeam, int guestteam, int penalties1, int penalties2)
+        public int PlayOffSecondLegEqualityExtraTimes(int hometeam, int guestteam, int penalties1, int penalties2)
         {
             if (penalties1 > penalties2) Winner = hometeam;
             else Winner = guestteam;
@@ -163,7 +163,7 @@ namespace FootballLeaguesSimulation.Controllers
         }
 
 
-        public int EleminationFinal(int hometeam, int guestteam, int score1, int score2)
+        public int Final(int hometeam, int guestteam, int score1, int score2)
         {
             if (score1 > score2) Winner = hometeam;
             else if (score1 < score2) Winner = guestteam;
@@ -171,7 +171,7 @@ namespace FootballLeaguesSimulation.Controllers
             return Winner;
         }
 
-        public int EleminationFinalEquality(int hometeam, int guestteam, int extratime1, int extratime2)
+        public int FinalEquality(int hometeam, int guestteam, int extratime1, int extratime2)
         {
             if (extratime1 > extratime2)
             {
@@ -183,7 +183,7 @@ namespace FootballLeaguesSimulation.Controllers
             }
             return Winner;
         }
-        public int EleminationFinalEqualityExtraTimes(int hometeam, int guestteam, int penalties1, int penalties2)
+        public int FinalEqualityExtraTimes(int hometeam, int guestteam, int penalties1, int penalties2)
         {
             if (penalties1 > penalties2) Winner = hometeam;
             else Winner = guestteam;

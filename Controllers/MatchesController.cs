@@ -138,13 +138,13 @@ namespace FootballLeaguesSimulation.Controllers
             {
                 if (match.Leg == 1)
                 {
-                    match.Winner = teamStandings.EleminationStandingFirstLeg(match.HomeTeamId, match.GuestTeamId, match.Score1, match.Score2);
+                    match.Winner = teamStandings.PlayOffFirstLeg(match.HomeTeamId, match.GuestTeamId, match.Score1, match.Score2);
                     match.Aggregation1 = teamStandings.Agg1;
                     match.Aggregation2 = teamStandings.Agg2;
                 }
                 if (match.Leg == 2)
                 {
-                    match.Winner = teamStandings.EleminationStandingSecondLeg(
+                    match.Winner = teamStandings.PlayOffSecondLeg(
                       match.HomeTeamId,
                       match.GuestTeamId,
                       match.Score1,
@@ -156,25 +156,25 @@ namespace FootballLeaguesSimulation.Controllers
 
                     if (match.Winner == 0)
                     {
-                        match.Winner = teamStandings.EleminationStandingSecondLegEquality(match.HomeTeamId, match.GuestTeamId, (int)match.Score1ET, (int)match.Score2ET);
+                        match.Winner = teamStandings.PlayOffSecondLegEquality(match.HomeTeamId, match.GuestTeamId, (int)match.Score1ET, (int)match.Score2ET);
                         match.Aggregation1 = teamStandings.Agg1;
                         match.Aggregation2 = teamStandings.Agg2;
                         if (match.Winner == 0)
                         {
-                            match.Winner = teamStandings.EleminationStandingSecondLegEqualityExtraTimes(match.HomeTeamId, match.GuestTeamId, (int)match.Score1P, (int)match.Score2P);
+                            match.Winner = teamStandings.PlayOffSecondLegEqualityExtraTimes(match.HomeTeamId, match.GuestTeamId, (int)match.Score1P, (int)match.Score2P);
                         }
                     }
                 }
             }
             if (group.Name == "Null" && round.Name == "Final")
             {
-                match.Winner = teamStandings.EleminationFinal(match.HomeTeamId, match.GuestTeamId, match.Score1, match.Score2);
+                match.Winner = teamStandings.Final(match.HomeTeamId, match.GuestTeamId, match.Score1, match.Score2);
                 if (match.Winner == 0)
                 {
-                    match.Winner = teamStandings.EleminationFinalEquality(match.HomeTeamId, match.GuestTeamId, (int)match.Score1ET, (int)match.Score2ET);
+                    match.Winner = teamStandings.FinalEquality(match.HomeTeamId, match.GuestTeamId, (int)match.Score1ET, (int)match.Score2ET);
                     if (match.Winner == 0)
                     {
-                        match.Winner = teamStandings.EleminationFinalEqualityExtraTimes(match.HomeTeamId, match.GuestTeamId, (int)match.Score1P, (int)match.Score2P);
+                        match.Winner = teamStandings.FinalEqualityExtraTimes(match.HomeTeamId, match.GuestTeamId, (int)match.Score1P, (int)match.Score2P);
                     }
                 }
             }
